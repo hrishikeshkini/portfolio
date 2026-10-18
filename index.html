@@ -1,976 +1,567 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
-  <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-5BB8W2X');</script>
-  <!-- End Google Tag Manager -->
-  <link rel="icon" type="image/png" href="/favicon.png"/>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <script src="https://kit.fontawesome.com/a24e1bb743.js" crossorigin="anonymous"></script>
-  <title>Personal Portfolio</title>
-  <meta content="" name="descriptison">
-  <meta content="" name="keywords">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hrishikesh Kini — Senior Data Analyst &amp; AI Engineer</title>
+  <meta name="description" content="Portfolio of Hrishikesh Kini, Senior Data Analyst / Manager specializing in GenAI, LLM systems, MLOps, and data-driven business impact.">
+  <link rel="icon" type="image/png" href="favicon.png">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
-
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169007209-3"></script>
+  <!-- Theme pre-paint: prevent flash of wrong theme -->
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-169007209-3');
+    (function () {
+      try {
+        var t = localStorage.getItem("hk-theme");
+        if (!t) t = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) { /* default dark */ }
+    })();
   </script>
-<style>
-  .img-fluid1 {
-  max-width: 400px;
-  height: 300px;
-}
-</style>
 
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Personal - v2.1.0
-  * Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- SEO / social -->
+  <meta property="og:title" content="Hrishikesh Kini — Senior Data Analyst &amp; AI Engineer">
+  <meta property="og:description" content="Senior Data Analyst / Manager. GenAI, LLM systems, MLOps. 3+ years shipping production AI with measurable business impact.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hrishikeshkini.github.io/portfolio/">
 </head>
 
 <body>
-  
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5BB8W2X"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-  <!-- ======= Header ======= -->
-  <header id="header" class="header-tops">
 
+  <!-- ===================== Navigation ===================== -->
+  <header class="nav">
     <div class="container">
-
-      <h1><a href="index.html">Hrishikesh Kini</a></h1>
-      <h2 style="color:#fff">I'm <span class="typing" style="color:#12D640"></span></h2>
-      <nav class="nav-menu d-none d-lg-block">
-        <ul>
-          <li class="active"><a href="#header"> <span>Home</span></a></li>
-          <li><a href="#about"><span>About</span></a></li>
-          <li><a href="#education"> <span>Education</span></a></li>
-          <li><a href="#experience"> <span>Experience</span></a></li>
-<!--          <li><a href="#projects"> <span>Projects</span></a></li>-->
-          <li><a href="#portfolio"> <span>Projects</span></a></li>
-          <li><a href="#skills"> <span>Skills</span></a></li>
-          <li><a href="#links" target="_blank"> <span>Resume</span></a></li>
-          <!-- <li><a href="#links"> <span>Resume & Links</span></a></li> -->
-          <li><a href="#contacts"> <span>Contact</span></a></li>
-
+      <a href="#" class="nav-logo">H<span class="gradient-text">K</span></a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
-      </nav><!-- .nav-menu -->
-
-      <div class="social-links">
-          <a href="https://www.linkedin.com/in/hrishikeshkini/" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-          <a href="https://github.com/hrishikeshkini" target="_blank" class="github"><i class="bx bxl-github"></i></a>
-          <a href="https://twitter.com/hrishikeshkini7" target="_blank" class="google"><i class="bx bxl-twitter"></i></a>
-          <a href="https://medium.com/@hrishikeshkini" target="_blank" class="google"><i class="bx bxl-medium"></i></a>
-
-      </div>
-
-    </div>
-  </header><!-- End Header -->
-
-  <!-- ======= About Section ======= -->
-  <section id="about" class="about">
-
-    <!-- ======= About Me ======= -->
-    <div class="about-me container">
-
-      <div class="section-title">
-        <h2>About</h2>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-4" data-aos="fade-right">
-          <img src="assets/img/profile.png" class="img-fluid" alt="">
-        </div>
-        <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-          <p> <b>🚀 Data Science Specialist | Driving Business Success Through Insights </b> </p>
-          
-          <p>Hello! I'm Hrishikesh Kini, a seasoned Data Analyst with over a year of hands-on experience in the dynamic fields of data science and big data. 📊 My expertise lies in transforming raw data into strategic insights, consistently propelling businesses toward data-driven excellence.</p>
-            
-          <p>💡<b> Analytical Mind, Strategic Impact: </b> <br>
-            Thriving on deciphering complex datasets, I turn them into actionable insights that become the backbone of informed business decisions. Whether collaborating with marketing teams to fine-tune campaigns or directly reporting insights to stakeholders, I revel in making businesses thrive in a data-driven landscape. </p>
-            
-          <p><b>📈 Beyond the Numbers: </b><br>
-            My passion extends beyond the data sheets. I'm deeply engrossed in the world of AI, regularly sharing insights into its potential, along with exploring the dynamic intersection of data science, big data, and stock market trading through my posts.</p>
-          
-          <p><b>🛠️ Key Skills:</b><br></p>
-          <ul>
-          <li><b>Programming:</b> Proficient in Python and R for robust data analysis and scripting.</li>
-          <li><b>Big Data Technologies:</b> Experienced in handling large datasets, utilizing tools like Hadoop and Spark.</li>
-          <li><b>Data Preparation & Feature Engineering:</b> Expertise in cleaning, transforming, and preparing data, along with crafting meaningful features to enhance model performance.</li>
-          <li><b>Statistical Modeling:</b> Applying statistical techniques to extract valuable insights.</li>
-          <li><b>Machine Learning Techniques:</b> Proficient in a range of ML algorithms, including regression, classification, clustering, and ensemble methods.</li>
-          <li><b>Model Deployment:</b> Successfully deploying models for real-world impact.</li>
-          <li><b>Monitoring and Optimization:</b> Implementing continuous monitoring and optimization strategies for sustained model performance.</li>
-          <li><b>Forecasting Techniques:</b> Advanced forecasting methods for predicting future trends.</li>
-          <li><b>Data Storytelling:</b> Turning complex insights into compelling narratives for diverse audiences.</li>
-          </ul>
-
-          <p><b>🚀 Eternal Learner, Trailblazer:</b><br>
-            In the fast-paced tech world, I'm always a step ahead. Embracing new tools and staying attuned to industry trends in data science, big data, and AI, I ensure continuous growth and innovation.</p>
-          <p><b>🌐 Let's Connect and Explore: </b><br>
-            I'm open to connecting with fellow professionals, data enthusiasts, or anyone keen on delving into the vast universe of data science, big data, and AI. Let's connect and explore the endless possibilities of data together!</p>
-          <br><br>
-            <div class="row">
-            <div class="col-lg-6">
-              <ul>
-                <li><i class="icofont-rounded-right"></i> <strong>Date of Birth:</strong> 03 May 2000</li>
-                <li><i class="icofont-rounded-right"></i> <strong>Phone:</strong> +91 8208873806</li>
-              </ul>
-            </div>
-            <div class="col-lg-6">
-              <ul>
-                <li><i class="icofont-rounded-right"></i> <strong>City:</strong> Hyderabad, Telangana </li>
-                <li><i class="icofont-rounded-right"></i> <strong>Email:</strong> hrishikesh.kini.35@gmail.com</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- End About Me -->
-
-    <!-- ======= Interests ======= -->
-    <div class="interests container">
-
-      <div class="section-title">
-        <h2>Interests</h2>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-3 col-md-4">
-          <div class="icon-box">
-            <i class="ri-database-line" style="color: #ffbb2c;"></i>
-            <h3>Big Data Analytics</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-          <div class="icon-box">
-            <i class="ri-database-2-line" style="color: #5578ff;"></i>
-            <h3>Data Science</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-          <div class="icon-box">
-            <i class="ri-bar-chart-grouped-line" style="color: #e80368;"></i>
-            <h3>Time Series Forecasting</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
-          <div class="icon-box">
-            <i class="ri-english-input" style="color: #1c7d32;"></i>
-            <h3>Cloud Coumputing (AWS, GCP)</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="ri-bit-coin-line" style="color: #fffb00;"></i>
-            <h3>Blockchain Technology</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="ri-bar-chart-box-line" style="color: #f1081f;"></i>
-            <h3>Data Visualization & Insights Finding</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="ri-file-list-3-line" style="color: #47aeff;"></i>
-            <h3>Machine Learning Operations (MLOps)</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="ri-image-line" style="color: #ffc107;"></i>
-            <h3>Computer Vision</h3>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- End Interests -->
-  </section><!-- End About Section -->
-
-
-
-  <!-- ======= Education Section ======= -->
-  <section id="education" class="services">
-    <div class="container">
-      <div class="section-title">
-        <h2>Education</h2>
-      </div>
-      <div class="row">
-        <div class="col-lg-12" data-aos="fade-up" style="display: inline-block;">
-
-
-            <div class="col-md-4 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100" style="padding:0px 0px;padding-bottom: 5px;display: inline-block;">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKQ0lMoUZo6iBpcLrH0eWdbra0b-DxeK8Tyg&usqp=CAU" class="img-fluid1" alt="">
-              <!-- <h4 style="text-align:left;"><a href="https://www.asu.edu/" target="_blank" style="color:#12d640">Arizona State University</a><br> </h4> -->
-              <p style="text-align:left;color:#fff;padding: 5px 10px;"><em>Bachelor of Computer Application</em></p>
-              <h5 style="text-align:left;padding: 0px 10px;">June 2018 - October 2021</h5>
-              <h6 style="text-align:left;color:#fff;padding: 0px 10px;">Relevant Coursework</h6>
-              <ul style="text-align:left;color:#fff;">
-                <li>Android Programming</li>
-                <li>Database Management system</li>
-                <li>Web Technology</li>
-              </ul>
-            </div>
-            <div class="col-md-4 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100" style="padding:0px 0px;padding-bottom: 5px;display: inline-block;">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjhVMIesBZC4jBoo9R6acdZ6Hyn2hfaxQXE7-FVbozElFJRdos-n-uLAw9PQMHhIcEFrs&usqp=CAU" class="img-fluid1" alt="">
-              <!-- <h4 style="text-align:left;"><a href="https://ahduni.edu.in/" target="_blank" style="color:#12d640">Ahmedabad University</a><br> </h4> -->
-              <p style="text-align:left;color:#fff;padding: 5px 10px;"><em>Higher Secondary (Science Stream)</em></p>
-              <h5 style="text-align:left;padding: 0px 10px;">June 2016 - May 2018</h5>
-              <h6 style="text-align:left;color:#fff;padding: 0px 10px;">Relevant Coursework</h6>
-              <ul style="text-align:left;color:#fff;">
-                <!-- <li>Data Structures &amp; Algorithms</li> -->
-                <li>Mathematics</li>
-                <!-- <li>Operating Systems</li> -->
-                <li>Computer Science</li>
-                <li>Physics</li>
-                
-                <!-- <li>Computer Vision</li> -->
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-    <div class="portfolio">
-    <div class="container">
-      <div class="section-title">
-        <h2>Online Certification</h2>
-      </div>
-
-      <div class="row portfolio-container" style="position: relative; height: 437.75px;">
-
-         <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 0px; top: 0px;">
-          <div class="portfolio-wrap">
-            <img src="https://media.designrush.com/inspiration_images/134929/conversions/_1512513081_152_ibm-mobile.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>NoSQL, Big Data, and Spark Foundations Specialization</h4>
-              <div class="portfolio-links">
-                <a href="https://www.coursera.org/account/accomplishments/specialization/ZK2UD3LUXGGG&utm_source=link&utm_campaign=copybutton_certificate&amp;utm_source=link&amp;utm_campaign=copybutton_certificate/" target="_blank" title="Certificate"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-           </div>
-          </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 370px; top: 0px;">
-          <div class="portfolio-wrap">
-            <img src="https://media.designrush.com/inspiration_images/134929/conversions/_1512513081_152_ibm-mobile.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Advanced Data Science with IBM</h4>
-              <div class="portfolio-links">
-                <a href="https://www.coursera.org/account/accomplishments/specialization/S6WYCXE2W8Q5&utm_source=link&utm_campaign=copybutton_certificate&amp;utm_source=link&amp;utm_campaign=copybutton_certificate" target="_blank" title="Certificate"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 740px; top: 0px;">
-          <div class="portfolio-wrap">
-            <img src="https://s.udemycdn.com/meta/default-meta-image-v2.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Machine Learning & Deep Learning in Python & R</h4>
-              <div class="portfolio-links">
-                <a href="https://www.udemy.com/certificate/UC-8c759a28-f9bd-4a39-be2f-9a3e1565e886/" target="_blank" title="Certificate"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-project" style="position: absolute; left: 0px; top: 218.875px;">
-          <div class="portfolio-wrap">
-            <img src="https://s.udemycdn.com/meta/default-meta-image-v2.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Pandas Masterclass: Advanced Data Analysis with Pandas</h4>
-              <div class="portfolio-links">
-                <a href="https://www.udemy.com/certificate/UC-9e020c97-fc28-4702-8911-c6a4c6bfe1bd/" target="_blank" title="Certificate"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-project" style="position: absolute; left: 370px; top: 218.875px;">
-          <div class="portfolio-wrap">
-            <img src="https://s.udemycdn.com/meta/default-meta-image-v2.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>The Python Programming Comprehensive Bootcamp</h4>
-              <div class="portfolio-links">
-                <a href="https://www.udemy.com/certificate/UC-daf7c3eb-9516-482c-b216-55131ae0da54/" target="_blank" title="Certificate"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-project" style="position: absolute; left: 740px; top: 218.875px;">
-          <div class="portfolio-wrap">
-            <img src="https://s.udemycdn.com/meta/default-meta-image-v2.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>C++ Programming Step By Step From Beginner To Ultimate Level</h4>
-              <div class="portfolio-links">
-                <a href="https://www.udemy.com/certificate/UC-e16c54d2-581d-4f1a-be15-b7bd8877367f/?utm_medium=certificate&amp;utm_source=link&amp;utm_campaign=copybutton_certificate/" target="_blank" title="Certificate"><i class="bx bx-link"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" aria-label="Toggle dark / light theme" title="Toggle theme">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 7a5 5 0 100 10 5 5 0 000-10zm0-5a1 1 0 011 1v2a1 1 0 11-2 0V3a1 1 0 011-1zm0 18a1 1 0 011 1v2a1 1 0 11-2 0v-2a1 1 0 011-1zM3.5 4.9a1 1 0 011.4 0L6.3 6.3a1 1 0 11-1.4 1.4L3.5 6.3a1 1 0 010-1.4zm14.1 14.1a1 1 0 011.4 0l1.4 1.4a1 1 0 11-1.4 1.4l-1.4-1.4a1 1 0 010-1.4zM2 12a1 1 0 011-1h2a1 1 0 110 2H3a1 1 0 01-1-1zm18 0a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1zM3.5 19.1a1 1 0 010-1.4l1.4-1.4a1 1 0 111.4 1.4l-1.4 1.4a1 1 0 01-1.4 0zM17.6 5.4a1 1 0 010-1.4l1.4-1.4a1 1 0 111.4 1.4l-1.4 1.4a1 1 0 01-1.4 0z"/></svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+        </button>
+        <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
-    </div>
+  </header>
 
-  </section>
-  <!-- End Education Section -->
-
-
-
-  <!-- Start Experience Section -->
-
-  <section id="experience" class="services">
-    <div class="container">
-      <div class="section-title">
-        <h2>Experience</h2>
+  <!-- ===================== Hero ===================== -->
+  <section class="hero">
+    <div class="hero-canvas" id="logo-canvas" aria-hidden="true"></div>
+    <div class="container hero-content">
+      <div class="logo-fallback" aria-hidden="true">H<span class="gradient-text">K</span></div>
+      <span class="hero-badge reveal"><span class="dot"></span> Open to Senior Data / AI roles</span>
+      <h1 class="hero-title reveal reveal-delay-1">Hrishikesh <span class="gradient-text">Kini</span></h1>
+      <p class="hero-subtitle reveal reveal-delay-2">
+        Senior Data Analyst / Manager turning data and LLMs into production systems —
+        <strong>3+ years</strong> shipping GenAI, MLOps, and analytics that drive multi-crore business impact.
+      </p>
+      <div class="hero-cta reveal reveal-delay-3">
+        <a href="#projects" class="btn btn--primary">View Projects</a>
+        <a href="#contact" class="btn btn--ghost">Get in Touch</a>
       </div>
-      <div class="row">
-          <div class="col-lg-12" data-aos="fade-up">
-            <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100">
-              <h4 style="text-align:left;"><a href="https://www.asu.edu/" style="color:#12d640">ASBL</a><br> </h4>
-              <h5 style="text-align:left;">September 2022 - November 2023</h5>
-              <p style="text-align:left;color:#fff"><em>Data Analyst </em></p>
-              <ul style="text-align:left;"><br>
-                <b>Cross-Functional Maestro:</b><br>
-    Harmonized collaborations with marketing, product teams, and stakeholders, unveiling data insights and strategic recommendations.
-    <ul>
-        <li>Achieved a <span>25% ROI surge</span> through data-driven marketing optimizations, reducing CAC by 20%.</li>
-        <li>Spearheaded product launches, elevating MAU by 30%, and cutting Time to Value by 15%.</li>
-        <li>Monitored Feature Usage Rate, ensuring a 25% boost in customer engagement.</li>
-        <li>Implemented video metrics, yielding a 40% increase in engagement and 25% higher retention.</li>
-        <li>Enhanced video content, contributing to a 20% growth in average watch time.</li>
-    </ul>
-    <p><b>Key Skills:</b> Collaborative Leadership, Data-Driven Strategies, Stakeholder Engagement.</p>
-    <br>
-    <b>Big Data & Database Optimization:</b><br>
-    Trimmed data loading times by 40%, ensuring timely access to critical information. Contributed to a 25% increase in database performance.
-    <p><b>Key Skills:</b> Big Data Optimization, Database Performance, Data Loading Efficiency.</p>
-    <br>
-    <b>Revolutionizing Customer Support:</b><br>
-    Transformed support with an advanced Sales Executive Chatbot, leveraging cutting-edge language models, language chaining, and real-time web scraping. Achieved 40% faster response times, boosting customer satisfaction by 25%. Liberated sales executives for critical tasks, saving 15 hours weekly, and amplifying productivity and revenue generation.
-    <p><b>Key Skills:</b> Chatbot Development, Customer Satisfaction Enhancement, Productivity Improvement.</p>
-    <br>
-    <b>OCR Excellence: Image-to-Text Transformation:</b><br>
-    Delivered an OCR project with a 95% accuracy rate, enhancing extraction efficiency by 35%. Implemented data preprocessing, resulting in a 30% OCR enhancement.
-    <p><b>Key Skills:</b> OCR, Image-to-Text Transformation, Data Preprocessing.</p>
-    <br>
-    <b>R&D Achievements:</b><br>
-    Pioneered R&D, advancing data analytics methodologies with groundbreaking approaches. Explored innovative data science techniques, ensuring continuous evolution and trend awareness.
-    <p><b>Key Skills:</b> Research and Development, Innovative Methodologies, Trend Awareness.</p>
-              </ul>
-            </div>
-              <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100">
-                <h4 style="text-align:left;"><a href="https://www.asu.edu/" style="color:#12d640">Dynamind</a><br> </h4>
-                <h5 style="text-align:left;">June 2022 - September 2022</h5>
-                <p style="text-align:left;color:#fff"><em>Data Analyst Intern </em></p>
-                <ul style="text-align:left;">
-            <br>
-                <b>Responsibilities:</b><br><br>
-                <b>Recommendation Engine Development:</b>
-                <ul>
-                    <li>Designed and implemented a recommendation engine, leveraging collaborative and content-based filtering methodologies.</li>
-                    <li>Resulted in a significant 45% boost in user engagement, enhancing the overall user experience.</li>
-                </ul>
-            <br>
-                <b>Automation of Mentor-Mentee Matchmaking System:</b>
-                <ul>
-                    <li>Automated the mentor-mentee matchmaking system for doubt clearing, reducing manual efforts.</li>
-                    <li>Achieved a time and cost savings of 15 hours, streamlining processes and improving overall efficiency.</li>
-                </ul>
-            <br>
-                <b>Exploratory Data Analysis and Dashboard Creation:</b>
-                <ul>
-                    <li>Conducted exploratory data analysis on various datasets, extracting actionable insights to inform business strategies.</li>
-                    <li>Developed interactive dashboards using Python, Tableau, and Advanced Excel, providing a visual representation of key performance metrics.</li>
-                </ul>
-            <br>
-                <b>Technologies Used:</b>
-                <ul>
-                    <li>Python</li>
-                    <li>Tableau</li>
-                    <li>Advanced Excel</li>
-                </ul>
-            <br>
-                <b>Impact:</b>
-                <ul>
-                    <li>Enhanced operational efficiency by automating time-consuming manual processes.</li>
-                    <li>Empowered decision-making through insightful data analysis and visualization.</li>
-                    <li>Contributed to a significant improvement in user engagement, fostering a more personalized user experience.</li>
-                </ul>
-                </ul>
-              </div>
-              <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100">
-                <h4 style="text-align:left;"><a href="https://www.augmenify.com/" style="color:#12d640">The Sparks Fundation</a><br> </h4>
-                <h5 style="text-align:left;">April 2022 - May 2022</h5>
-                <p style="text-align:left;color:#fff"><em>Data Science Intern </em></p>
-                <ul style="text-align:left;">
-                  <li>Gathered, reviewed, analyzed, and implemented data requirements
-                    effectively by creating algorithms based on deep-dive statistical analysis &
-                    predictive data modeling.</li>
-                  <li>Deploying quantitate analysis and data visualization to present data. Design,
-                    run and measure experiments to test business hypotheses. </li>
-                  <li>Performed Trend Analysis on Data and applied best practices of problemsolving and effective communication.
-                  </li>
-                </ul>
-              </div>
-              <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100">
-                <h4 style="text-align:left;"><a href="https://www.epitomesolutions.in/" style="color:#12d640">Ineuran.ai</a><br> </h4>
-                <h5 style="text-align:left;">January 2022 -March 2022</h5>
-                <p style="text-align:left;color:#fff"><em>Machine Learning Intern</em></p>
-                <ul style="text-align:left;">
-                  <li>Performed tasks like data exploration, data cleaning, and feature engineering
-                    on the data, where data extracted from the Cassandra database.</li>
-                  <li>Trying out different machine learning and deep learning algorithm to
-                    increase the accuracy of model, follwed by hyperparameter tuning to
-                    optimise the accuracy or score</li>
-                  <li>Writing and maintaining requirement documents for different strategies
-                    used in project building (High-level Document, Low-level document,
-                    Architecture, wireframe).</li>
-                  <li>Deploying machine learning models on the cloud (Heroku) and exposing a
-                    complete solution as an API.
-                    </li>
-                </ul>
-              </div>
-          </div>
-        </div>
-    </div>
-  </section>
-
-  <!-- End Experience Section -->
-
-
-
-  <!-- Start Project Section -->
-  <section id="portfolio" class="portfolio">
-    <div class="container">
-
-      <div class="section-title">
-        <h2>Projects</h2>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-12 d-flex justify-content-center">
-          <ul id="portfolio-flters">
-            <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-app">Web-App</li>
-            <li data-filter=".filter-data">Data Analysis</li>
-            <li data-filter=".filter-machine">Machine Learning</li>
-            <li data-filter=".filter-deep">Deep Learning</li>
-            <li data-filter=".filter-mlops">MLOps</li>
-            <li data-filter=".filter-genai">Generative AI</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="row portfolio-container">
-        <div class="col-lg-4 col-md-6 portfolio-item filter-mlops">
-          <center><h4>AdenoDetect Pro : Adenocarcinoma Classification Enhanced by MLOps</h4></center>
-          <div class="portfolio-wrap">
-            <img src="https://gmka.org/wp-content/uploads/2022/10/Depositphotos_279308254_L-780x480.jpg" class="img-fluid1" alt="">
-            <div class="portfolio-info">
-              
-              <div class="portfolio-links">
-                <a href="projects/mlops.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Project Details"><i class="bx bx-info-circle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-genai">
-            <center><h4><br><br>FinScribe : News Research Bot Using LLM</h4></center>
-            <div class="portfolio-wrap">
-              <img src="https://www.investopedia.com/thmb/UHjxVhzCXizncD9hbQcCVta-B1k=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/equity-research-career-path-and-qualifications_round1-ec5d344bad634c5999cecd376a547d7f.png" class="img-fluid1" alt="">
-              <div class="portfolio-info">
-                
-                <div class="portfolio-links">
-                  <a href="projects/finscribe.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Project Details"><i class="bx bx-info-circle"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-      
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-data">
-          <center><h4><br><br>Sales Insights Data Analysis PowerBi, Tableau</h4></center>
-          <div class="portfolio-wrap">
-            <img src="https://github.com/hrishikeshkini/sales-insight-using-sql-tableau-powerbi/raw/main/images/powerbi2.gif" class="img-fluid1" alt="">
-            <div class="portfolio-info">
-              
-              <div class="portfolio-links">
-                <a href="projects/saleinsights.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Project Details"><i class="bx bx-info-circle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <center><h4>Books Recommender System Web App</h4></center>
-          <div class="portfolio-wrap">
-            <img src="https://media.wired.com/photos/5be4cd03db23f3775e466767/125:94/w_2375,h_1786,c_limit/books-521812297.jpg" class="img-fluid1" alt="">
-            <div class="portfolio-info">
-              
-              <div class="portfolio-links">
-                <a href="projects/bookrecommender.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Project Details"><i class="bx bx-info-circle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-        <center><h4>Movie Recommender System Web App</h4></center>
-        <div class="portfolio-wrap">
-          <img src="https://editor.analyticsvidhya.com/uploads/76889recommender-system-for-movie-recommendation.jpg" class="img-fluid1" alt="">
-          <div class="portfolio-info">
-            <div class="portfolio-links">
-              <a href="projects/gan.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Project Details"><i class="bx bx-info-circle"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <center><h4>Water Quality : Drinking water potability</h4></center>
-          <div class="portfolio-wrap">
-            <img src="https://genesiswatertech.com/wp-content/uploads/2019/07/Potable-Water.jpg" class="img-fluid1" alt="">
-            <div class="portfolio-info">
-              
-              <div class="portfolio-links">
-                <a href="projects/recommender.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Project Details"><i class="bx bx-info-circle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-deep filter-app">
-          <center><h4>Dog Breed <br> Prediction</h4></center>
-          <div class="portfolio-wrap">
-            <img src="https://cf.ltkcdn.net/dogs/images/std/238277-800x515r1-cross-breeding-dogs.jpg" class="img-fluid1" alt="">
-            <div class="portfolio-info">
-              <div class="portfolio-links">
-                <a href="projects/dog.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Project Details"><i class="bx bx-info-circle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <center><h4>Flights Fare Predictions Web App</h4></center>
-          <div class="portfolio-wrap">
-            <img src="https://www.india.com/wp-content/uploads/2022/02/flight-1.png" class="img-fluid1" alt="">
-            <div class="portfolio-info">
-              
-              <div class="portfolio-links">
-                <a href="projects/flightfare.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Project Details"><i class="bx bx-info-circle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <center><h4>Carinfinity Machine learning project</h4></center>
-          <div class="portfolio-wrap">
-            <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" class="img-fluid1" alt="">
-            <div class="portfolio-info">
-              <div class="portfolio-links">
-                <a href="projects/vdg.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Project Details"><i class="bx bx-info-circle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-deep filter-app">
-          <center><h4>Stock Price Prediction Using LSTM</h4></center>
-          <div class="portfolio-wrap">
-            <img src="https://schaeffers-cdn.s3.amazonaws.com/images/default-source/schaeffers-cdn-images/default-images/charts/bigstock-concept-of-stock-market-and-fi-410303575.jpg?sfvrsn=dd3ad806_4" class="img-fluid1" alt="">
-            <div class="portfolio-info">
-              
-              <div class="portfolio-links">
-                <a href="projects/stocklstm.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Project Details"><i class="bx bx-info-circle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-machine">
-          <center><h4>Credit Card Fraud Detection Using Pycaret</h4></center>
-          <div class="portfolio-wrap">
-            <img src="https://cdn2.hubspot.net/hubfs/60948/How%20to%20Protect%20Your%20Small%20Business%20from%20Credit%20Card%20Fraud.png" class="img-fluid1" alt="">
-            <div class="portfolio-info">
-              
-              <div class="portfolio-links">
-                <a href="projects/twitteranalysis.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Project Details"><i class="bx bx-info-circle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>        
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-machine">
-          <center><h4>Flight fare prediction using auto-sklearn</h4></center>
-          <div class="portfolio-wrap">
-            <img src="https://www.usnews.com/dims4/USNEWS/ed7b154/2147483647/crop/2000x1334%2B0%2B1/resize/970x647/quality/85/?url=http%3A%2F%2Fmedia.beam.usnews.com%2Fb7%2Ff4%2F847d373a4218bcbb9383ff501eaa%2F191004-flightapp-stock.jpg" class="img-fluid1" alt="">
-            <div class="portfolio-info">
-              <div class="portfolio-links">
-                <a href="projects/iras.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Project Details"><i class="bx bx-info-circle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-machine">
-          <center><h4>Heart Attack Risk predictor using EvalML</h4></center>
-          <div class="portfolio-wrap">
-            <img src="https://www.godigit.com/content/dam/godigit/directportal/en/contenthm/heart-attack-patient.jpg" class="img-fluid1" alt="">
-            <div class="portfolio-info">
-              
-              <div class="portfolio-links">
-                <a href="projects/musicplayer.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Project Details"><i class="bx bx-info-circle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-deep">
-          <center><h4>Petrol Prices <br> Forecasting</h4></center>
-          <div class="portfolio-wrap">
-            <img src="https://media.kare11.com/assets/KARE/images/af609b62-291b-4d42-a29a-f9b772e38f4c/af609b62-291b-4d42-a29a-f9b772e38f4c_750x422.jpg" class="img-fluid1" alt="">
-            <div class="portfolio-info">
-              <div class="portfolio-links">
-                <a href="projects/petrol.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Project Details"><i class="bx bx-info-circle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-machine">
-          <!-- <br> -->
-          <center><h4>Zomato Restaurant Rating Prediction</h4></center>
-          <div class="portfolio-wrap">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3osmxczIMNPFJlPIXx8XwF-dbvy69P1xYZ4_tf7IVD15gALeQ1ZRkGS1Inw___edZpYc&usqp=CAU" class="img-fluid1" alt="">
-            <div class="portfolio-info">
-              <div class="portfolio-links">
-                <a href="projects/resume.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Project Details"><i class="bx bx-info-circle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-deep">
-          <center><h4>Bank Customer Churn Prediction</h4></center>
-          <div class="portfolio-wrap">
-            <img src="https://www.processmaker.com/wp-content/uploads/2020/10/customer-onboarding_1-768x512.jpg" class="img-fluid1" alt="">
-            <div class="portfolio-info">
-              <div class="portfolio-links">
-                <a href="projects/bank.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Project Details"><i class="bx bx-info-circle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <center><h4>Pima Indians Diabetes Prediction</h4></center>
-          <div class="portfolio-wrap">
-            <img src="https://images.indianexpress.com/2021/12/diabetes_1200_getty.jpg" class="img-fluid1" alt="">
-            <div class="portfolio-info">
-              <div class="portfolio-links">
-                <a href="projects/ml.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Project Details"><i class="bx bx-info-circle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-data">
-          <center><h4>Youtube videos <br> Analysis</h4></center>
-          <div class="portfolio-wrap">
-            <img src="https://duet-cdn.vox-cdn.com/thumbor/0x0:2040x1360/2400x1600/filters:focal(1020x680:1021x681):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/23986639/acastro_STK092_03.jpg" class="img-fluid1" alt="">
-            <div class="portfolio-info">
-              <div class="portfolio-links">
-                <a href="projects/youtube.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Project Details"><i class="bx bx-info-circle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-lg-4 col-md-6 portfolio-item filter-data">
-          <center><h4>Indian Stocks Price <br> Analysis</h4></center>
-          <div class="portfolio-wrap">
-            <img src="https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2021/09/stockmarket-1631258083.jpg" class="img-fluid1" alt="">
-            <div class="portfolio-info">
-              <div class="portfolio-links">
-                <a href="projects/stock.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Project Details"><i class="bx bx-info-circle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-data">
-          <center><h4>School Donation <br> Analysis</h4></center>
-          <div class="portfolio-wrap">
-            <img src="https://acuverfoundation.org/wp-content/uploads/2022/02/dahanu-school.jpg" class="img-fluid1" alt="">
-            <div class="portfolio-info">
-              <div class="portfolio-links">
-                <a href="projects/school.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Project Details"><i class="bx bx-info-circle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>     
-        
-        <div class="col-lg-4 col-md-6 portfolio-item filter-data">
-          <center><h4>Expensive Football Players Analysis</h4></center>
-          <div class="portfolio-wrap">
-            <img src="https://image.cnbcfm.com/api/v1/image/103946389-GettyImages-531359844.jpg?v=1529472708" class="img-fluid1" alt="">
-            <div class="portfolio-info">
-              <div class="portfolio-links">
-                <a href="projects/football.html" data-gall="portfolioDetailsGallery" data-vbtype="iframe" class="venobox" title="Project Details"><i class="bx bx-info-circle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-
-
+      <div class="social-row reveal reveal-delay-3">
+        <a href="https://www.linkedin.com/in/hrishikeshkini/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </a>
+        <a href="https://github.com/hrishikeshkini" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.15c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 015.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.7 5.38-5.26 5.67.41.36.78 1.05.78 2.13v3.16c0 .31.21.67.8.55A11.5 11.5 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+        </a>
+        <a href="https://medium.com/@hrishikeshkini" target="_blank" rel="noopener" aria-label="Medium blog">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42S13.2 15.54 13.2 12s1.51-6.42 3.38-6.42S20.96 8.46 20.96 12zM24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75S24 8.83 24 12z"/></svg>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- End Project Section -->
-
-
-
-  <!-- Start Skills Section -->
-
-  <section id="skills" class="services">
+  <!-- ===================== About ===================== -->
+  <section id="about" class="section section--soft">
     <div class="container">
-      <div class="section-title">
-        <h2>Skills</h2>
-      </div>
-      <div class="row">
-        <div class="col-lg-12" data-aos="fade-up">
-          <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100" style="background:#fff">
-            <h4 style="text-align:left;color:#09203a">Languages and Databases</h4>
-                <p style="text-align:left;">
-                  <img src="https://www.vectorlogo.zone/logos/python/python-horizontal.svg" alt="vectorlogo.zone" height="50" width="150">
-                  <img src="https://www.vectorlogo.zone/logos/r-project/r-project-icon.svg" alt="vectorlogo.zone">
-                  <img src="https://www.vectorlogo.zone/logos/java/java-horizontal.svg" alt="vectorlogo.zone">
-                  <img src="https://www.vectorlogo.zone/logos/android/android-ar21.svg" alt="vectorlogo.zone" height="50" width="150">
-                  <img src="https://seeklogo.com/images/C/c-programming-language-logo-9B32D017B1-seeklogo.com.png" alt="vectorlogo.zone" height="50" width="50">
-                  <img src="https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.png" alt="vectorlogo.zone" height="50" width="50">
-                  <img src="https://www.vectorlogo.zone/logos/w3_html5/w3_html5-icon.svg" alt="vectorlogo.zone">
-                  <img src="https://www.vectorlogo.zone/logos/w3_css/w3_css-icon.svg" alt="upload.wikimedia.org" height="60" width="90">
-                  <img src="https://www.vectorlogo.zone/logos/javascript/javascript-icon.svg" alt="upload.wikimedia.org" height="60" width="90">
-                  <img src="https://www.vectorlogo.zone/logos/php/php-ar21.svg" alt="upload.wikimedia.org" height="60" width="90">
-                </p>
-            </div>
-            <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="lefade-up" data-aos-delay="100" style="background:#fff">
-              <h4 style="text-align:left;color:#09203a">Cloud and MlOps</h4>
-                <p style="text-align:left;">
-                  <img src="https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://www.vectorlogo.zone/logos/heroku/heroku-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://www.vectorlogo.zone/logos/ibm_cloud/ibm_cloud-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://www.vectorlogo.zone/logos/microsoft_azure/microsoft_azure-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://www.vectorlogo.zone/logos/google_cloud/google_cloud-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://vectorwiki.com/images/hfzoL__devops.svg" alt="vectorlogo.zone" height="70" width="130">
-              </p>
-          </div>
-            <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="lefade-up" data-aos-delay="100" style="background:#fff">
-              <h4 style="text-align:left;color:#09203a">Frameworks</h4>
-                <p style="text-align:left;">
-                  <img src="https://www.vectorlogo.zone/logos/tensorflow/tensorflow-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://raw.githubusercontent.com/valohai/ml-logos/5127528b5baadb77a6ea4b999a47b4e86bf0f98b/keras-text.svg" alt="vectorlogo.zone" width="90" height="70">
-                  <img src="https://www.vectorlogo.zone/logos/pytorch/pytorch-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://www.vectorlogo.zone/logos/opencv/opencv-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="upload.wikimedia.org" width="90" height="70">
-                  <img src="https://www.vectorlogo.zone/logos/pocoo_flask/pocoo_flask-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://www.vectorlogo.zone/logos/djangoproject/djangoproject-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://www.vectorlogo.zone/logos/getbootstrap/getbootstrap-ar21.svg" alt="vectorlogo.zone">
-              </p>
-          </div>
-          <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="lefade-up" data-aos-delay="100" style="background:#fff">
-            <h4 style="text-align:left;color:#09203a">Big Data And Databases</h4>
-              <p style="text-align:left;">
-                <img src="https://www.vectorlogo.zone/logos/apache_spark/apache_spark-ar21.svg" alt="vectorlogo.zone" height="70" width="130">
-                <img src="https://www.vectorlogo.zone/logos/mongodb/mongodb-ar21.svg" alt="vectorlogo.zone" height="70" width="130">
-                <img src="https://www.vectorlogo.zone/logos/apache_cassandra/apache_cassandra-ar21.svg" alt="vectorlogo.zone" height="70" width="130">
-                <img src="https://www.vectorlogo.zone/logos/apache_couchdb/apache_couchdb-ar21.svg" alt="vectorlogo.zone" height="70" width="130">
-                <img src="https://www.vectorlogo.zone/logos/apache_pig/apache_pig-ar21.svg" alt="vectorlogo.zone" height="70" width="130">
-                <img src="https://dv-website.s3.amazonaws.com/uploads/2014/02/cl.png" alt="vectorlogo.zone" height="70" width="130">
-                <br>
-                <img src="https://www.vectorlogo.zone/logos/mysql/mysql-horizontal.svg" alt="vectorlogo.zone" height="70" width="130">
-                  <img src="https://www.vectorlogo.zone/logos/postgresql/postgresql-horizontal.svg" alt="vectorlogo.zone" height="70" width="150">
-                  <img src="https://www.vectorlogo.zone/logos/sqlite/sqlite-ar21.svg" alt="upload.wikimedia.org" height="60" width="90">
-            </p>
+      <span class="section-kicker reveal">// about</span>
+      <h2 class="section-title reveal">Where <span class="gradient-text">data meets AI</span></h2>
+
+      <div class="about-grid">
+        <div class="about-photo reveal">
+          <img src="assets/img/profile.png" alt="Hrishikesh Kini" loading="lazy">
         </div>
-          <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="lefade-up" data-aos-delay="100" style="background:#fff">
-              <h4 style="text-align:left;color:#09203a">Tools</h4>
-                <p style="text-align:left;">
-                  <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://www.vectorlogo.zone/logos/heroku/heroku-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://www.vectorlogo.zone/logos/ibm_cloud/ibm_cloud-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://www.vectorlogo.zone/logos/docker/docker-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://www.vectorlogo.zone/logos/jupyter/jupyter-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-ar21.svg" alt="vectorlogo.zone">
-                  <img src="https://vectorwiki.com/images/Tb8i6__tableau-logo.svg" alt="vectorlogo.zone" height="70" width="130">
-              </p>
+        <div class="about-text reveal reveal-delay-1">
+          <p>
+            I'm Hrishikesh Kini, a <strong>Senior Data Analyst / Manager</strong> with 3+ years of
+            hands-on experience spanning <strong>MLOps, LLMOps, and Generative AI</strong>. I take AI
+            products end-to-end — from problem framing and data pipelines to model deployment,
+            monitoring, and measurable business outcomes.
+          </p>
+          <p>
+            At <strong>ASBL</strong>, I've driven <strong>₹200+ crore in revenue impact</strong> by
+            leading AI initiatives across real estate and fintech: building LLM-powered chatbots,
+            agentic workflows, and large-scale BI platforms while mentoring analysts on the team.
+          </p>
+          <p>
+            I care about shipping AI that works in production — not just notebooks. My toolkit spans
+            Python, SQL, cloud platforms (AWS, GCP, Azure), and the modern LLM stack, applied to
+            domains from NLP to computer vision.
+          </p>
+
+          <div class="skills-grid" style="margin-top: var(--space-6);">
+            <div class="card card--hover skill-card">
+              <h3>Generative AI &amp; LLMs</h3>
+              <div class="chip-group">
+                <span class="chip">LangChain</span>
+                <span class="chip">OpenAI</span>
+                <span class="chip">RAG</span>
+                <span class="chip">Agentic AI</span>
+                <span class="chip">Prompt Engineering</span>
+                <span class="chip">LLM Ops</span>
+              </div>
+            </div>
+            <div class="card card--hover skill-card">
+              <h3>Machine Learning &amp; MLOps</h3>
+              <div class="chip-group">
+                <span class="chip">Scikit-learn</span>
+                <span class="chip">TensorFlow</span>
+                <span class="chip">XGBoost</span>
+                <span class="chip">MLflow</span>
+                <span class="chip">Model Deployment</span>
+                <span class="chip">Monitoring</span>
+              </div>
+            </div>
+            <div class="card card--hover skill-card">
+              <h3>Data Engineering &amp; Analytics</h3>
+              <div class="chip-group">
+                <span class="chip">Python</span>
+                <span class="chip">SQL</span>
+                <span class="chip">Pandas</span>
+                <span class="chip">PySpark</span>
+                <span class="chip">Airflow</span>
+                <span class="chip">Power BI</span>
+                <span class="chip">Tableau</span>
+              </div>
+            </div>
+            <div class="card card--hover skill-card">
+              <h3>Cloud &amp; DevOps</h3>
+              <div class="chip-group">
+                <span class="chip">AWS</span>
+                <span class="chip">GCP</span>
+                <span class="chip">Azure</span>
+                <span class="chip">Docker</span>
+                <span class="chip">Git &amp; CI/CD</span>
+                <span class="chip">FastAPI</span>
+              </div>
+            </div>
           </div>
-          
         </div>
       </div>
     </div>
   </section>
 
-  <!-- End Skills Section -->
-
-
-
-
-  <!-- Start Links section -->
-  <section id="links" class="services">
+  <!-- ===================== Experience ===================== -->
+  <section id="experience" class="section">
     <div class="container">
-      <div class="section-title">
-        <h2>Resume & Links</h2>
-      </div>
-      <div class="row">
-        <div class="col-md-3 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100">
-          <a href="https://drive.google.com/file/d/1a6Tu0cwKqpltpRp2RywOfaC8Bm1-9gT6/view?usp=sharing" target="_blank"><div class="icon"><i class="icofont-page"></i></div></a>
-          <h4 class="title"><a href="https://drive.google.com/file/d/1a6Tu0cwKqpltpRp2RywOfaC8Bm1-9gT6/view?usp=sharing" target="_blank">Resume</a></h4>
-          <p class="description" style="color:#fff;">The link contains downloadable resume</p>
+      <span class="section-kicker reveal">// experience</span>
+      <h2 class="section-title reveal">Where I've <span class="gradient-text">worked</span></h2>
+      <p class="section-sub reveal">3+ years building and shipping production AI and analytics.</p>
+
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="card card--hover timeline-card">
+            <div class="timeline-head">
+              <h3>Senior Data Analyst <span class="timeline-company">@ ASBL</span></h3>
+              <span class="timeline-meta">Sep 2022 — Present · Hyderabad, India</span>
+            </div>
+            <p class="timeline-meta">AI Leadership · LLM Systems · MLOps · BI</p>
+            <ul>
+              <li>Leading AI initiatives driving <strong>₹200+ crore revenue impact</strong>, reporting to senior leadership on AI strategy and execution.</li>
+              <li>Built an LLM-powered chatbot with RAG and agentic workflows, cutting support response time by <strong>40%</strong>.</li>
+              <li>Deployed a WhatsApp spam classifier protecting thousands of daily customer interactions.</li>
+              <li>Architected company-wide BI platforms (Metabase + SQL) powering decisions across sales, marketing, and CRM teams.</li>
+              <li>Set up MLOps practices — model versioning, monitoring, and automated retraining pipelines on AWS.</li>
+              <li>Mentored a team of analysts, upskilling them in GenAI tooling and advanced SQL/Python.</li>
+            </ul>
+          </div>
         </div>
-        <!-- <div class="col-md-3 mt-4 mt-md-0 icon-box" data-aos="fade-up">
-          <a href="https://github.com/rajaprerak/LeetCode_Problems" target="_blank"><div class="icon"><i class="icofont-link"></i></div></a>
-          <h4 class="title"><a href="https://github.com/rajaprerak/LeetCode_Problems" target="_blank">LeetCode Repository</a></h4>
-          <p class="description" style="color:#fff;"> The github repository contains leetcode problems solution in python.</p>
-        </div> -->
-        <!-- <div class="col-md-3 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100">
-          <a href="https://techingenious.herokuapp.com/" target="_blank"><div class="icon"><i class="icofont-page"></i></div></a>
-          <h4 class="title"><a href="https://techingenious.herokuapp.com/" target="_blank">Blog</a></h4>
-          <p class="description" style="color:#fff;">Blog containing articles on AI, coding, development</p>
-        </div> -->
+
+        <div class="timeline-item reveal">
+          <div class="card card--hover timeline-card">
+            <div class="timeline-head">
+              <h3>Data Science Intern <span class="timeline-company">@ Dynamind Solutions</span></h3>
+              <span class="timeline-meta">Jun 2022 — Sep 2022 · Remote</span>
+            </div>
+            <ul>
+              <li>Built a recommendation engine that boosted user engagement by <strong>45%</strong>.</li>
+              <li>Designed and deployed ML models end-to-end, from EDA and feature engineering to production deployment.</li>
+              <li>Collaborated with product and engineering teams to integrate model predictions into the platform.</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-  </section> <!--End Links Section -->
+  </section>
 
-
-  <!-- Start Contact Section -->
-
-  <section id="contacts" class="contact">
+  <!-- ===================== Projects ===================== -->
+  <section id="projects" class="section section--soft">
     <div class="container">
+      <span class="section-kicker reveal">// projects</span>
+      <h2 class="section-title reveal">Things I've <span class="gradient-text">built</span></h2>
+      <p class="section-sub reveal">ML, GenAI, and analytics projects — click any card for the full write-up.</p>
 
-      <div class="section-title">
-        <h2>Contact</h2>
+      <div class="filter-bar reveal">
+        <button class="filter-btn is-active" data-filter="*">All</button>
+        <button class="filter-btn" data-filter="genai">GenAI</button>
+        <button class="filter-btn" data-filter="ml">Machine Learning</button>
+        <button class="filter-btn" data-filter="mlops">MLOps</button>
+        <button class="filter-btn" data-filter="data">Data Analytics</button>
+        <button class="filter-btn" data-filter="cv">Computer Vision</button>
       </div>
 
-      <div class="row mt-2">
+      <div class="projects-grid">
 
-        <div class="col-md-6 d-flex align-items-stretch">
-          <div class="info-box">
-            <i class="bx bx-map"></i>
-            <h3>My Address</h3>
-            <p>Panajim Goa</p>
-            <p>Hyderabad Telangana</p>
+        <article class="card card--hover project-card reveal" data-category="mlops cv">
+          <div class="project-thumb" data-initials="AD">
+            <div class="thumb-fallback">AD</div>
           </div>
-        </div>
-
-        <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
-          <div class="info-box">
-            <i class="bx bx-share-alt"></i>
-            <h3>Social Profiles</h3>
-            <br>
-            <div class="social-links">
-              <br>
-              <a href="https://www.linkedin.com/in/hrishikeshkini/" target="_blank" class="linkedin"><i class="fa-brands fa-linkedin fa-2xl"></i></a>
-              <a href="https://github.com/hrishikeshkini" target="_blank" class="github"><i class="fa-brands fa-github fa-2xl"></i></a>
-              <a href="https://twitter.com/hrishikeshkini7" target="_blank" class="google"><i class="fa-brands fa-twitter fa-2xl"></i></a>
-              <a href="https://www.kaggle.com/hrishikeshkini" target="_blank" class="google"><i class="fa-brands fa-kaggle fa-2xl"></i></a>
-            </div>
+          <div class="project-body">
+            <h3><a href="projects/mlops.html">AdenoDetect Pro</a></h3>
+            <p>Real-time adenoid detection from endoscopy imagery with an ML pipeline and deployment automation.</p>
+            <div class="project-tags"><span class="chip">MLOps</span><span class="chip">Computer Vision</span></div>
           </div>
-        </div>
+        </article>
 
-        <div class="col-md-6 mt-4 d-flex align-items-stretch">
-          <div class="info-box">
-            <i class="bx bx-envelope"></i>
+        <article class="card card--hover project-card reveal" data-category="genai">
+          <div class="project-thumb" data-initials="FS">
+            <img src="assets/img/project/blog.jpg" alt="FinScribe" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3><a href="projects/finscribe.html">FinScribe</a></h3>
+            <p>GenAI assistant for financial documents — summarization and Q&amp;A over earnings reports.</p>
+            <div class="project-tags"><span class="chip">GenAI</span><span class="chip">NLP</span></div>
+          </div>
+        </article>
+
+        <article class="card card--hover project-card reveal" data-category="data">
+          <div class="project-thumb" data-initials="SI">
+            <img src="assets/img/project/resume.jpg" alt="Sales Insights" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3><a href="projects/saleinsights.html">Sales Insights Data Analysis</a></h3>
+            <p>End-to-end sales analytics with Tableau — revenue trends, regional performance, and KPI dashboards.</p>
+            <div class="project-tags"><span class="chip">Data Analytics</span><span class="chip">Tableau</span></div>
+          </div>
+        </article>
+
+        <article class="card card--hover project-card reveal" data-category="ml data">
+          <div class="project-thumb" data-initials="BC">
+            <img src="assets/img/project/recommender.jpg" alt="Bank Churn Prediction" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3><a href="projects/bank.html">Bank Customer Churn Prediction</a></h3>
+            <p>Classifying at-risk bank customers with ensemble models and SHAP-driven explainability.</p>
+            <div class="project-tags"><span class="chip">Classification</span><span class="chip">XGBoost</span></div>
+          </div>
+        </article>
+
+        <article class="card card--hover project-card reveal" data-category="ml">
+          <div class="project-thumb" data-initials="BR">
+            <img src="assets/img/project/gan.jpg" alt="Books Recommender" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3><a href="projects/bookrecommender.html">Books Recommender System</a></h3>
+            <p>Collaborative-filtering book recommendations with a deployed web interface.</p>
+            <div class="project-tags"><span class="chip">Recommender</span><span class="chip">Python</span></div>
+          </div>
+        </article>
+
+        <article class="card card--hover project-card reveal" data-category="ml">
+          <div class="project-thumb" data-initials="MR">
+            <img src="assets/img/project/todo.jpg" alt="Movie Recommender" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3><a href="projects/gan.html">Movie Recommender System</a></h3>
+            <p>Content-based movie similarity engine with a Streamlit front end.</p>
+            <div class="project-tags"><span class="chip">Recommender</span><span class="chip">Streamlit</span></div>
+          </div>
+        </article>
+
+        <article class="card card--hover project-card reveal" data-category="cv ml">
+          <div class="project-thumb" data-initials="DB">
+            <img src="assets/img/project/vdg.jpg" alt="Dog Breed Classifier" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3><a href="projects/dog.html">Dog Breed Prediction</a></h3>
+            <p>Deep CNN classifier identifying dog breeds from images with transfer learning.</p>
+            <div class="project-tags"><span class="chip">Computer Vision</span><span class="chip">CNN</span></div>
+          </div>
+        </article>
+
+        <article class="card card--hover project-card reveal" data-category="ml">
+          <div class="project-thumb" data-initials="FF">
+            <img src="assets/img/project/iras.jpeg" alt="Flight Fare Prediction" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3><a href="projects/flightfare.html">Flight Fare Prediction</a></h3>
+            <p>Regression pipeline predicting airfares from route, timing, and airline features.</p>
+            <div class="project-tags"><span class="chip">Regression</span><span class="chip">Scikit-learn</span></div>
+          </div>
+        </article>
+
+        <article class="card card--hover project-card reveal" data-category="mlops">
+          <div class="project-thumb" data-initials="AS">
+            <img src="assets/img/project/iras.jpeg" alt="AutoML Flight Fare" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3><a href="projects/iras.html">Flight Fare Prediction with Auto-sklearn</a></h3>
+            <p>Automated ML pipeline search and model selection for fare prediction.</p>
+            <div class="project-tags"><span class="chip">AutoML</span><span class="chip">MLOps</span></div>
+          </div>
+        </article>
+
+        <article class="card card--hover project-card reveal" data-category="ml">
+          <div class="project-thumb" data-initials="HA">
+            <img src="assets/img/project/musicplayer.jpg" alt="Heart Attack Predictor" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3><a href="projects/musicplayer.html">Heart Attack Risk Predictor</a></h3>
+            <p>Risk stratification from clinical features using EvalML AutoML.</p>
+            <div class="project-tags"><span class="chip">Healthcare</span><span class="chip">EvalML</span></div>
+          </div>
+        </article>
+
+        <article class="card card--hover project-card reveal" data-category="ml">
+          <div class="project-thumb" data-initials="PD">
+            <img src="assets/img/project/ml.jpg" alt="Diabetes Prediction" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3><a href="projects/ml.html">Pima Indians Diabetes Prediction</a></h3>
+            <p>Classic binary classification with feature engineering and model comparison.</p>
+            <div class="project-tags"><span class="chip">Classification</span><span class="chip">Scikit-learn</span></div>
+          </div>
+        </article>
+
+        <article class="card card--hover project-card reveal" data-category="data ml">
+          <div class="project-thumb" data-initials="PF">
+            <img src="assets/img/project/todo.jpg" alt="Petrol Prices Forecasting" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3><a href="projects/petrol.html">Petrol Prices Forecasting</a></h3>
+            <p>Time-series forecasting of fuel prices with trend and seasonality decomposition.</p>
+            <div class="project-tags"><span class="chip">Time Series</span><span class="chip">Forecasting</span></div>
+          </div>
+        </article>
+
+        <article class="card card--hover project-card reveal" data-category="ml">
+          <div class="project-thumb" data-initials="WQ">
+            <img src="assets/img/project/recommender.jpg" alt="Water Quality" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3><a href="projects/recommender.html">Water Quality: Potability</a></h3>
+            <p>Classifying drinking water safety from chemical composition measurements.</p>
+            <div class="project-tags"><span class="chip">Classification</span><span class="chip">EDA</span></div>
+          </div>
+        </article>
+
+        <article class="card card--hover project-card reveal" data-category="data">
+          <div class="project-thumb" data-initials="ZR">
+            <img src="assets/img/project/resume.jpg" alt="Zomato Restaurant Rating" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3><a href="projects/resume.html">Zomato Restaurant Rating</a></h3>
+            <p>EDA and rating prediction across thousands of restaurant records.</p>
+            <div class="project-tags"><span class="chip">EDA</span><span class="chip">Regression</span></div>
+          </div>
+        </article>
+
+        <article class="card card--hover project-card reveal" data-category="data ml">
+          <div class="project-thumb" data-initials="CF">
+            <img src="assets/img/project/twitteranalysis.jpg" alt="Credit Card Fraud" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3><a href="projects/twitteranalysis.html">Credit Card Fraud Detection</a></h3>
+            <p>Fraud detection on imbalanced transaction data using PyCaret.</p>
+            <div class="project-tags"><span class="chip">PyCaret</span><span class="chip">Imbalanced Data</span></div>
+          </div>
+        </article>
+
+        <article class="card card--hover project-card reveal" data-category="ml">
+          <div class="project-thumb" data-initials="CI">
+            <img src="assets/img/project/vdg.jpg" alt="CarInfinity ML" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3><a href="projects/vdg.html">CarInfinity Machine Learning</a></h3>
+            <p>Used-car pricing model with feature pipelines and deployment.</p>
+            <div class="project-tags"><span class="chip">Regression</span><span class="chip">Deployment</span></div>
+          </div>
+        </article>
+
+        <article class="card card--hover project-card reveal" data-category="data ml">
+          <div class="project-thumb" data-initials="IS">
+            <img src="assets/img/project/resume.jpg" alt="Indian Stock Analysis" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3><a href="projects/stock.html">Indian Stock Price Analysis</a></h3>
+            <p>Exploratory and technical analysis of NSE stock movements and volatility.</p>
+            <div class="project-tags"><span class="chip">Finance</span><span class="chip">Pandas</span></div>
+          </div>
+        </article>
+
+        <article class="card card--hover project-card reveal" data-category="ml data">
+          <div class="project-thumb" data-initials="SL">
+            <img src="assets/img/project/todo.jpg" alt="Stock LSTM" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3><a href="projects/stocklstm.html">Stock Price Prediction using LSTM</a></h3>
+            <p>Sequence modeling of stock prices with recurrent networks.</p>
+            <div class="project-tags"><span class="chip">LSTM</span><span class="chip">Deep Learning</span></div>
+          </div>
+        </article>
+
+        <article class="card card--hover project-card reveal" data-category="data">
+          <div class="project-thumb" data-initials="SD">
+            <img src="assets/img/project/todo.jpg" alt="School Donation Analysis" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3><a href="projects/school.html">School Donation Analysis</a></h3>
+            <p>Donor behavior analysis on the DonorsChoose dataset with visual storytelling.</p>
+            <div class="project-tags"><span class="chip">EDA</span><span class="chip">Visualization</span></div>
+          </div>
+        </article>
+
+        <article class="card card--hover project-card reveal" data-category="data">
+          <div class="project-thumb" data-initials="EF">
+            <img src="assets/img/project/todo.jpg" alt="Football Player Analysis" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3><a href="projects/football.html">Expensive Football Players Analysis</a></h3>
+            <p>What drives transfer fees? Statistical analysis of the football transfer market.</p>
+            <div class="project-tags"><span class="chip">EDA</span><span class="chip">Statistics</span></div>
+          </div>
+        </article>
+
+        <article class="card card--hover project-card reveal" data-category="data">
+          <div class="project-thumb" data-initials="YA">
+            <img src="assets/img/project/blog.jpg" alt="YouTube Analysis" loading="lazy">
+          </div>
+          <div class="project-body">
+            <h3><a href="projects/youtube.html">YouTube Videos Analysis</a></h3>
+            <p>Trend and engagement analysis across YouTube categories and channels.</p>
+            <div class="project-tags"><span class="chip">EDA</span><span class="chip">Pandas</span></div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Education ===================== -->
+  <section id="education" class="section">
+    <div class="container">
+      <span class="section-kicker reveal">// education</span>
+      <h2 class="section-title reveal">My <span class="gradient-text">education</span></h2>
+
+      <div class="edu-grid">
+        <div class="card card--hover edu-card reveal">
+          <h3>Bachelor of Computer Application</h3>
+          <p class="edu-meta">Goa University · 2018 — 2021</p>
+          <p>Coursework across Android programming, database management systems, and web technology.</p>
+        </div>
+        <div class="card card--hover edu-card reveal reveal-delay-1">
+          <h3>Higher Secondary (Science Stream)</h3>
+          <p class="edu-meta">S.S. Samiti Higher Secondary · Goa Board · 2016 — 2018</p>
+          <p>Mathematics, Computer Science, and Physics.</p>
+        </div>
+        <div class="card card--hover edu-card reveal reveal-delay-2">
+          <h3>Online Certifications</h3>
+          <p class="edu-meta">Coursera · IBM</p>
+          <p>
+            <a href="https://www.coursera.org/account/accomplishments/specialization/ZK2UD3LUXGGG" target="_blank" rel="noopener">NoSQL, Big Data &amp; Spark Foundations</a> ·
+            <a href="https://www.coursera.org/account/accomplishments/specialization/S6WYCXE2W8Q5" target="_blank" rel="noopener">Advanced Data Science with IBM</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== Contact ===================== -->
+  <section id="contact" class="section section--soft">
+    <div class="container">
+      <span class="section-kicker reveal">// contact</span>
+      <h2 class="section-title reveal">Let's <span class="gradient-text">talk</span></h2>
+      <p class="section-sub reveal">Open to Senior Data Analyst / Manager roles and AI collaborations.</p>
+
+      <div class="contact-grid">
+        <div class="card card--hover contact-card reveal">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </div>
+          <div>
             <h3>Email</h3>
-            <p>hrishikesh.kini.35@gmail.com</p>
+            <a href="mailto:hrishikesh.kini.35@gmail.com">hrishikesh.kini.35@gmail.com</a>
           </div>
         </div>
-        <div class="col-md-6 mt-4 d-flex align-items-stretch">
-          <div class="info-box">
-            <i class="bx bx-phone-call"></i>
-            <h3>Contact</h3>
-            <p>+91 8208873806</p>
+        <div class="card card--hover contact-card reveal reveal-delay-1">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+          </div>
+          <div>
+            <h3>Phone</h3>
+            <a href="tel:+919021926725">+91 90219 26725</a>
+          </div>
+        </div>
+        <div class="card card--hover contact-card reveal reveal-delay-2">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z"/></svg>
+          </div>
+          <div>
+            <h3>Location</h3>
+            <span>Hyderabad, Telangana, India</span>
+          </div>
+        </div>
+        <div class="card card--hover contact-card reveal reveal-delay-3">
+          <div class="contact-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.15c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 015.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.7 5.38-5.26 5.67.41.36.78 1.05.78 2.13v3.16c0 .31.21.67.8.55A11.5 11.5 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+          </div>
+          <div>
+            <h3>GitHub</h3>
+            <a href="https://github.com/hrishikeshkini" target="_blank" rel="noopener">github.com/hrishikeshkini</a>
           </div>
         </div>
       </div>
-      <!-- <div id="sfczmlqxr5caww28rswrt8849ghbekgnh3j" ></div><script type="text/javascript" src="https://counter1.stat.ovh/private/counter.js?c=zmlqxr5caww28rswrt8849ghbekgnh3j&down=async" async></script><noscript><a href="https://www.freecounterstat.com" title="free web counter"><img src="https://counter1.stat.ovh/private/freecounterstat.php?c=zmlqxr5caww28rswrt8849ghbekgnh3j" border="0" title="free web counter" alt="free web counter" style="visibility: none;"></a></noscript> -->
     </div>
   </section>
 
-  <!-- End Contact Section -->
+  <!-- ===================== Footer ===================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="social-row">
+        <a href="https://www.linkedin.com/in/hrishikeshkini/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </a>
+        <a href="https://github.com/hrishikeshkini" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.15c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 015.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.7 5.38-5.26 5.67.41.36.78 1.05.78 2.13v3.16c0 .31.21.67.8.55A11.5 11.5 0 0023.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+        </a>
+        <a href="https://medium.com/@hrishikeshkini" target="_blank" rel="noopener" aria-label="Medium blog">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42S13.2 15.54 13.2 12s1.51-6.42 3.38-6.42S20.96 8.46 20.96 12zM24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75S24 8.83 24 12z"/></svg>
+        </a>
+      </div>
+      <p>© <span data-year>2026</span> Hrishikesh Kini · Built with vanilla HTML, CSS &amp; Three.js</p>
+    </div>
+  </footer>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/jquery/jquery.min.js"></script>
-  <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-  <script src="assets/vendor/counterup/counterup.min.js"></script>
-  <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/venobox/venobox.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script type="text/javascript">
-    var typed = new Typed('.typing',{
-      strings: ["Machine Learning Enthusiast", "Passionate Data scientist", "Deep Learning Enthusiast"],
-      loop: true,
-      typeSpeed: 65,
-      backSpeed: 65
-    });
-  </script>
-
-  <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-
+  <script type="module" src="assets/js/logo3d.js"></script>
 </body>
 
 </html>

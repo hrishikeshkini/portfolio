@@ -1,151 +1,184 @@
-/**
-* Template Name: Personal - v2.1.0
-* Template URL: https://bootstrapmade.com/personal-free-resume-bootstrap-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-!(function($) {
+/* =========================================================
+   Hrishikesh Kini — Portfolio main.js
+   Theme toggle, nav behaviour, project filtering, reveals.
+   No framework, no build step. Loaded on every page.
+   ========================================================= */
+(function () {
   "use strict";
 
-  // Nav Menu
-  $(document).on('click', '.nav-menu a, .mobile-nav a', function(e) {
-    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-      var hash = this.hash;
-      var target = $(hash);
-      if (target.length) {
-        e.preventDefault();
+  /* ---------------- Theme ---------------- */
+  const THEME_KEY = "hk-theme";
+  const root = document.documentElement;
 
-        if ($(this).parents('.nav-menu, .mobile-nav').length) {
-          $('.nav-menu .active, .mobile-nav .active').removeClass('active');
-          $(this).closest('li').addClass('active');
-        }
-
-        if (hash == '#header') {
-          $('#header').removeClass('header-top');
-          $("section").removeClass('section-show');
-          return;
-        }
-
-        if (!$('#header').hasClass('header-top')) {
-          $('#header').addClass('header-top');
-          setTimeout(function() {
-            $("section").removeClass('section-show');
-            $(hash).addClass('section-show');
-          }, 350);
-        } else {
-          $("section").removeClass('section-show');
-          $(hash).addClass('section-show');
-        }
-
-        if ($('body').hasClass('mobile-nav-active')) {
-          $('body').removeClass('mobile-nav-active');
-          $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
-          $('.mobile-nav-overly').fadeOut();
-        }
-
-        return false;
-
-      }
+  // Resolve theme: stored preference -> OS preference -> dark
+  function resolveTheme() {
+    const stored = localStorage.getItem(THEME_KEY);
+    if (stored === "dark" || stored === "light") return stored;
+    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches) {
+      return "light";
     }
-  });
+    return "dark";
+  }
 
-  // Activate/show sections on load with hash links
-  if (window.location.hash) {
-    var initial_nav = window.location.hash;
-    if ($(initial_nav).length) {
-      $('#header').addClass('header-top');
-      $('.nav-menu .active, .mobile-nav .active').removeClass('active');
-      $('.nav-menu, .mobile-nav').find('a[href="' + initial_nav + '"]').parent('li').addClass('active');
-      setTimeout(function() {
-        $("section").removeClass('section-show');
-        $(initial_nav).addClass('section-show');
-      }, 350);
+  // Apply immediately to avoid flash (also done inline in <head>)
+  root.setAttribute("data-theme", resolveTheme());
+
+  function initThemeToggle() {
+    const toggle = document.querySelector(".theme-toggle");
+    if (!toggle) return;
+    toggle.addEventListener("click", function () {
+      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem(THEME_KEY, next);
+      // Let 3D logo pick up new palette
+      window.dispatchEvent(new CustomEvent("hk-themechange", { detail: { theme: next } }));
+    });
+  }
+
+  /* ---------------- Navigation ---------------- */
+  function initNav() {
+    const nav = document.querySelector(".nav");
+    const burger = document.querySelector(".nav-burger");
+    const links = document.querySelector(".nav-links");
+    if (!nav) return;
+
+    const onScroll = function () {
+      nav.classList.toggle("is-scrolled", window.scrollY > 24);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    if (burger && links) {
+      burger.addEventListener("click", function () {
+        const open = links.classList.toggle("is-open");
+        burger.classList.toggle("is-open", open);
+        burger.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      // Close menu when a link is clicked
+      links.querySelectorAll("a").forEach(function (a) {
+        a.addEventListener("click", function () {
+          links.classList.remove("is-open");
+          burger.classList.remove("is-open");
+          burger.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
+
+    // Highlight active section link (landing page only)
+    const sectionIds = ["about", "experience", "projects", "education", "contact"];
+    const navAnchors = Array.prototype.slice
+      .call(document.querySelectorAll('.nav-links a[href^="#"]'))
+      .filter(function (a) {
+        return sectionIds.indexOf(a.getAttribute("href").slice(1)) !== -1;
+      });
+    if (navAnchors.length && "IntersectionObserver" in window) {
+      const sections = navAnchors
+        .map(function (a) {
+          return document.getElementById(a.getAttribute("href").slice(1));
+        })
+        .filter(Boolean);
+      const spy = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            navAnchors.forEach(function (a) {
+              a.classList.toggle(
+                "is-active",
+                a.getAttribute("href") === "#" + entry.target.id
+              );
+            });
+          });
+        },
+        { rootMargin: "-45% 0px -50% 0px" }
+      );
+      sections.forEach(function (s) {
+        spy.observe(s);
+      });
     }
   }
 
-  // Mobile Navigation
-  if ($('.nav-menu').length) {
-    var $mobile_nav = $('.nav-menu').clone().prop({
-      class: 'mobile-nav d-lg-none'
-    });
-    $('body').append($mobile_nav);
-    $('body').prepend('<button type="button" class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>');
-    $('body').append('<div class="mobile-nav-overly"></div>');
+  /* ---------------- Project filtering ---------------- */
+  function initFilters() {
+    const bar = document.querySelector(".filter-bar");
+    const grid = document.querySelector(".projects-grid");
+    if (!bar || !grid) return;
 
-    $(document).on('click', '.mobile-nav-toggle', function(e) {
-      $('body').toggleClass('mobile-nav-active');
-      $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
-      $('.mobile-nav-overly').toggle();
-    });
-
-    $(document).click(function(e) {
-      var container = $(".mobile-nav, .mobile-nav-toggle");
-      if (!container.is(e.target) && container.has(e.target).length === 0) {
-        if ($('body').hasClass('mobile-nav-active')) {
-          $('body').removeClass('mobile-nav-active');
-          $('.mobile-nav-toggle i').toggleClass('icofont-navigation-menu icofont-close');
-          $('.mobile-nav-overly').fadeOut();
-        }
-      }
-    });
-  } else if ($(".mobile-nav, .mobile-nav-toggle").length) {
-    $(".mobile-nav, .mobile-nav-toggle").hide();
-  }
-
-  // jQuery counterUp
-  $('[data-toggle="counter-up"]').counterUp({
-    delay: 10,
-    time: 1000
-  });
-
-  // Skills section
-  $('.skills-content').waypoint(function() {
-    $('.progress .progress-bar').each(function() {
-      $(this).css("width", $(this).attr("aria-valuenow") + '%');
-    });
-  }, {
-    offset: '80%'
-  });
-
-  // Testimonials carousel (uses the Owl Carousel library)
-  $(".testimonials-carousel").owlCarousel({
-    autoplay: true,
-    dots: true,
-    loop: true,
-    responsive: {
-      0: {
-        items: 1
-      },
-      768: {
-        items: 2
-      },
-      900: {
-        items: 3
-      }
-    }
-  });
-
-  // Porfolio isotope and filter
-  $(window).on('load', function() {
-    var portfolioIsotope = $('.portfolio-container').isotope({
-      itemSelector: '.portfolio-item',
-      layoutMode: 'fitRows'
-    });
-
-    $('#portfolio-flters li').on('click', function() {
-      $("#portfolio-flters li").removeClass('filter-active');
-      $(this).addClass('filter-active');
-
-      portfolioIsotope.isotope({
-        filter: $(this).data('filter')
+    const cards = Array.prototype.slice.call(grid.querySelectorAll(".project-card"));
+    bar.querySelectorAll(".filter-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        bar.querySelectorAll(".filter-btn").forEach(function (b) {
+          b.classList.toggle("is-active", b === btn);
+        });
+        const f = btn.getAttribute("data-filter");
+        cards.forEach(function (card) {
+          const cats = (card.getAttribute("data-category") || "").split(" ");
+          card.classList.toggle("is-hidden", f !== "*" && cats.indexOf(f) === -1);
+        });
       });
     });
+  }
 
-  });
+  /* ---------------- Scroll reveal ---------------- */
+  function initReveals() {
+    const els = document.querySelectorAll(".reveal");
+    if (!els.length) return;
+    if (!("IntersectionObserver" in window)) {
+      els.forEach(function (el) {
+        el.classList.add("is-visible");
+      });
+      return;
+    }
+    const io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    els.forEach(function (el) {
+      io.observe(el);
+    });
+  }
 
-  // Initiate venobox (lightbox feature used in portofilo)
-  $(document).ready(function() {
-    $('.venobox').venobox();
-  });
+  /* ---------------- Footer year ---------------- */
+  function initYear() {
+    const el = document.querySelector("[data-year]");
+    if (el) el.textContent = new Date().getFullYear();
+  }
 
-})(jQuery);
+  /* ---------------- Project page image fallback ----------------
+     Project cards reference ../assets/img/project/<slug>.<ext>;
+     where a file is missing, swap in the gradient fallback block. */
+  function initImgFallbacks() {
+    document.querySelectorAll(".project-thumb img").forEach(function (img) {
+      img.addEventListener("error", function () {
+        const wrap = img.closest(".project-thumb");
+        if (!wrap || wrap.querySelector(".thumb-fallback")) return;
+        const fb = document.createElement("div");
+        fb.className = "thumb-fallback";
+        fb.textContent = (wrap.getAttribute("data-initials") || "HK").trim();
+        img.replaceWith(fb);
+      });
+    });
+  }
+
+  /* ---------------- Boot ---------------- */
+  function init() {
+    initThemeToggle();
+    initNav();
+    initFilters();
+    initReveals();
+    initYear();
+    initImgFallbacks();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
