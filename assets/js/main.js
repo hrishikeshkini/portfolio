@@ -166,6 +166,42 @@
     });
   }
 
+  /* ---------------- Blog feed ----------------
+     Posts live in assets/data/blogs.json, refreshed daily by
+     .github/workflows/update-blogs.yml from the Medium RSS feed.
+     If the fetch fails, the static fallback copy stays visible. */
+  function initBlogs() {
+    const grid = document.querySelector("#blog-grid");
+    if (!grid) return;
+    fetch("assets/data/blogs.json")
+      .then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        return r.json();
+      })
+      .then(function (data) {
+        const posts = (data && data.posts) || [];
+        if (!posts.length) return;
+        grid.innerHTML = posts
+          .slice(0, 6)
+          .map(function (p) {
+            return (
+              '<article class="card card--hover blog-card">' +
+              '<p class="blog-date">' + (p.date || "") + "</p>" +
+              '<h3><a href="' + p.link + '" target="_blank" rel="noopener">' + p.title + "</a></h3>" +
+              '<p class="blog-excerpt">' + (p.excerpt || "") + "</p>" +
+              '<a class="blog-link" href="' + p.link + '" target="_blank" rel="noopener">Read on Medium →</a>' +
+              "</article>"
+            );
+          })
+          .join("");
+        const fb = grid.parentElement.querySelector(".blog-fallback");
+        if (fb) fb.remove();
+      })
+      .catch(function () {
+        /* keep fallback text */
+      });
+  }
+
   /* ---------------- Boot ---------------- */
   function init() {
     initThemeToggle();
@@ -174,6 +210,7 @@
     initReveals();
     initYear();
     initImgFallbacks();
+    initBlogs();
   }
 
   if (document.readyState === "loading") {

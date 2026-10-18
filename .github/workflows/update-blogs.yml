@@ -1,0 +1,69 @@
+name: Update Medium blog posts
+
+# Refreshes assets/data/blogs.json from the Medium RSS feed daily.
+# Committing to main triggers the GitHub Pages redeploy.
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # daily at 06:00 UTC
+  workflow_dispatch: # allow manual runs from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-blogs
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch Medium RSS and regenerate blogs.json
+        run: |
+          python3 - <<'EOF'
+          import xml.etree.ElementTree as ET
+          import json, re, html, urllib.request
+
+          FEED = "https://medium.com/feed/@hrishikeshkini"
+          req = urllib.request.Request(FEED, headers={"User-Agent": "curl/8"})
+          with urllib.request.urlopen(req, timeout=30) as r:
+              tree = ET.parse(r)
+
+          ns = {"content": "http://purl.org/rss/1.0/modules/content/"}
+          posts = []
+          for item in tree.getroot().iter("item"):
+              title = (item.findtext("title") or "").strip()
+              link = (item.findtext("link") or "").strip()
+              date = (item.findtext("pubDate") or "").strip()
+              cd = item.findtext("content:encoded", namespaces=ns) or ""
+              m = re.search(r"<p[^>]*>(.*?)</p>", cd, re.S)
+              excerpt = html.unescape(re.sub(r"<[^>]+>", "", m.group(1))).strip() if m else ""
+              excerpt = re.sub(r"\s+", " ", excerpt)[:220]
+              posts.append({"title": title, "link": link, "date": date, "excerpt": excerpt})
+
+          out = {"source": FEED, "posts": posts}
+          with open("assets/data/blogs.json", "w", encoding="utf-8") as f:
+              json.dump(out, f, indent=2)
+          print(f"Wrote {len(posts)} posts")
+          EOF
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet assets/data/blogs.json; then
+            echo "No changes to blog data"
+          else
+            git add assets/data/blogs.json
+            git commit -m "chore: refresh Medium blog posts [skip ci]"
+            git push
+          fi

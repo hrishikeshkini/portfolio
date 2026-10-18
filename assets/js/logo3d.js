@@ -8,7 +8,11 @@
 import * as THREE from "../vendor/three/three.module.js";
 
 const TEXT = "HK";
-const PARTICLE_COUNT = 6000;
+// Scale particle density down on mobile / low-end devices (SKILL.md anti-pattern:
+// desktop-only 3D). 6000 on desktop, 2500 on phones or small viewports.
+const IS_MOBILE =
+  /Mobi|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
+const PARTICLE_COUNT = IS_MOBILE ? 2500 : 6000;
 const MOUSE_RADIUS = 1.6;
 const ASSEMBLE_DURATION = 2200; // ms
 

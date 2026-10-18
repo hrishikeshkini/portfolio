@@ -1198,6 +1198,107 @@ body.logo3d-active .logo-fallback {
   }
 }
 
+/* ---------- Project card link icons ---------- */
+.project-links {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: var(--space-3);
+}
+
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  transition: background var(--transition), transform var(--transition),
+    border-color var(--transition);
+}
+
+.card-link svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--text-secondary);
+}
+
+.card-link:hover {
+  background: var(--bg-accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.card-link:hover svg {
+  fill: var(--accent);
+}
+
+/* ---------- Blog section ---------- */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-5);
+}
+
+.blog-date {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: var(--space-2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.blog-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: var(--space-3);
+}
+
+.blog-card h3 a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.blog-card h3 a:hover {
+  color: var(--accent);
+}
+
+.blog-excerpt {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-4);
+  flex-grow: 1;
+}
+
+.blog-link {
+  font-size: 0.9rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.blog-link:hover {
+  text-decoration: underline;
+}
+
+.blog-fallback {
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+/* ---------- Contact resume CTA ---------- */
+.contact-cta {
+  margin-top: var(--space-6);
+  text-align: center;
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {
