@@ -11,8 +11,9 @@ It is a **static HTML/CSS/JS site** with no build step, bundler, or server-side 
 - `/` (Root): `index.html` (main landing page), `favicon.png`, `CNAME` (custom domain config), and resume PDFs.
 - `/projects`: Individual HTML pages for each project listed on the main site. When adding a new project, create a corresponding HTML file here and update the projects section in `index.html`.
 - `/assets/css`: Stylesheets. `style.css` handles core styles, design tokens, and fluid responsiveness.
-- `/assets/js`: JavaScript files. `main.js` handles global interactions (scrolling, theme toggle, blog feed from Medium, etc.). `cat3d.js` implements the interactive 3D cat logo on the landing page and navbar using vanilla Three.js per `SKILL.md`. `fluid-cursor.js` provides the luminous ember cursor trail and 3D card tilt spotlight. `cat.js` implements the companion dialogue and reactions.
-- `/assets/vendor`: Third-party libraries (Bootstrap, jQuery, etc.). Do not modify files here directly.
+- `/assets/js`: JavaScript files. `main.js` handles global interactions (scrolling, theme toggle, blog feed from Medium, etc.). `cat-follower.js` renders the realistic rigged 3D cat (`assets/models/cat.glb`) in a fixed, pointer-events-none layer: it stands on the hero circle (`data-cat-anchor`), looks at the cursor, and keeps an idle pose on touch or under `prefers-reduced-motion`. Past the hero it simply sits in the bottom-right corner — it does not travel between sections. `fluid-cursor.js` provides the 3D card tilt and magnetic buttons (the ember particle trail was removed per `DESIGN_SPEC.md`).
+- `/assets/models`: the rigged cat model, `cat.glb`. Credit: "Toon Cat FREE" by Omabuarts Studio (Sketchfab), CC-BY-4.0 — the footer carries the attribution.
+- `/assets/vendor`: Third-party libraries (Bootstrap, jQuery, etc.). Do not modify files here directly. Includes the vendored `three` r160 (`three.module.js`) plus the `three/examples` modules the 3D cat needs (`GLTFLoader`, `BufferGeometryUtils`, `RoomEnvironment`), with their `three` imports rewritten to the local bundle path so the site stays buildless.
 
 ## Implementation & Deployment
 

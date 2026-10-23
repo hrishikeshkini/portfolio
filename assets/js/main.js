@@ -188,16 +188,6 @@
       });
   }
 
-  /* ---------------- Companion loader across pages ---------------- */
-  function initCompanion() {
-    if (document.getElementById("companion")) return;
-    const isProject = window.location.pathname.indexOf("/projects/") !== -1;
-    const s = document.createElement("script");
-    s.src = isProject ? "../assets/js/cat.js" : "assets/js/cat.js";
-    s.defer = true;
-    document.body.appendChild(s);
-  }
-
   /* ---------------- Boot ---------------- */
   function init() {
     initThemeToggle();
@@ -206,7 +196,6 @@
     initYear();
     initImgFallbacks();
     initBlogs();
-    initCompanion();
   }
 
   if (document.readyState === "loading") {

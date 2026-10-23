@@ -1,6 +1,6 @@
 /* =========================================================
    Hrishikesh Kini — Portfolio Design System
-   Editorial, warm-neutral, ember accent, SVG cat companion.
+   Editorial, warm-neutral, ember accent, realistic 3D cat.
    Static site: CSS variables for dark/light theming, no build.
    ========================================================= */
 
@@ -48,7 +48,7 @@
 
   --text: #f5f2ec;
   --text-muted: #a69f94;
-  --text-faint: #736c63;
+  --text-faint: #8a837a;
 
   --accent: #f0652b;
   --accent-2: #ff7b42;
@@ -65,16 +65,6 @@
   --scrollbar-thumb: #332d29;
   --scrollbar-thumb-hover: #4d443e;
 
-  /* Orange Cat Mascot Palette (matching reference photos) */
-  --cat-fur: #e86c23;
-  --cat-fur-shadow: #b8470e;
-  --cat-white: #fffdf9;
-  --cat-pink: #f472b6;
-  --cat-amber: #fbbf24;
-  --cat-pupil: #12100f;
-  --cat-stroke: #2e2a26;
-  --cat-fill: #e86c23;
-  --cat-eye: #fbbf24;
 }
 
 /* ---------- Light theme (The AI Engineer's Workshop — Warm Ivory & Terracotta) ---------- */
@@ -89,7 +79,7 @@
 
   --text: #191919;
   --text-muted: #625d56;
-  --text-faint: #8c847a;
+  --text-faint: #6b6559;
 
   --accent: #d9470b;
   --accent-2: #b83805;
@@ -106,16 +96,6 @@
   --scrollbar-thumb: #d5ccbe;
   --scrollbar-thumb-hover: #b5a999;
 
-  /* Orange Cat Mascot Palette (matching reference photos) */
-  --cat-fur: #e86c23;
-  --cat-fur-shadow: #c85312;
-  --cat-white: #fffdf9;
-  --cat-pink: #f472b6;
-  --cat-amber: #f59e0b;
-  --cat-pupil: #181412;
-  --cat-stroke: #191919;
-  --cat-fill: #e86c23;
-  --cat-eye: #f59e0b;
 }
 
 /* ---------- Reset & base ---------- */
@@ -339,29 +319,6 @@ html.js .reveal.is-visible {
   transition: transform var(--transition);
 }
 
-.nav-cat-stage {
-  width: 26px;
-  height: 26px;
-  display: inline-block;
-  vertical-align: middle;
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.nav-logo.has-3d-cat .icon-cat {
-  display: none !important;
-}
-
-.nav-logo:not(.has-3d-cat) .nav-cat-stage {
-  display: none !important;
-}
-
-.nav-logo .icon-cat {
-  width: 22px;
-  height: 22px;
-  flex-shrink: 0;
-}
 
 .nav-logo .gradient-text {
   font-size: inherit;
@@ -478,118 +435,293 @@ html.js .reveal.is-visible {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero (DESIGN_SPEC.md) ----------
+   The hero is a self-contained light "cream" band on the spec palette.
+   Tokens are scoped to .hero so the rest of the site is untouched. */
 .hero {
+  --ip-bg: #fbf7f2;
+  --surface: #ffffff;
+  --sand: #f3e9de;
+  --sand-deep: #f5e6d6;
+  --border: #e6d9cb;
+  --border-strong: #d9c9b8;
+  --ink: #1a1410;
+  --body: #5e534a;
+  --accent: #c2410c;
+  --online: #1f9d6b;
+
+  /* remap the global tokens the shared components rely on */
+  --text: var(--ink);
+  --text-muted: var(--body);
+  --text-faint: #8a837a;
+  --bg-card: var(--surface);
+  --bg-card-hover: var(--sand);
+  --accent-text-on: #ffffff;
+  --accent-soft: rgba(194, 65, 12, 0.12);
+
   position: relative;
-  min-height: 100svh;
+  min-height: 860px;
   display: flex;
   align-items: center;
   padding-top: var(--nav-height);
-  overflow: hidden;
+  background: var(--ip-bg);
   z-index: 1;
 }
 
+/* Dark theme: same hero structure, site midnight + ember palette, so the
+   theme toggle stays coherent instead of leaving a cream band on a dark page. */
+[data-theme="dark"] .hero {
+  --ip-bg: #121110;
+  --surface: #1e1c1a;
+  --sand: #262320;
+  --sand-deep: #1a1816;
+  --border: #2e2a26;
+  --border-strong: #453f39;
+  --ink: #f5f2ec;
+  --body: #a69f94;
+  --accent: #f0652b;
+  --online: #34d399;
+
+  --text: var(--ink);
+  --text-muted: var(--body);
+  --text-faint: #736c63;
+  --bg-card: var(--surface);
+  --bg-card-hover: var(--sand);
+  --accent-text-on: #121110;
+  --accent-soft: rgba(240, 101, 43, 0.14);
+}
+
 .hero-inner {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-7);
+  gap: 56px;
+  width: 100%;
+  max-width: 1160px;
+  margin-inline: auto;
+  padding-inline: 24px;
   padding-block: var(--space-8) var(--space-7);
+}
+
+.hero-copy {
+  flex: 1 1 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
 }
 
 .hero-kicker {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
-  letter-spacing: 0.16em;
+  font-size: 13px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  font-weight: 500;
   color: var(--accent);
-  margin-bottom: var(--space-4);
+  margin: 0;
 }
 
 .hero-badge {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-pill);
-  background: var(--bg-card);
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--surface);
   border: 1px solid var(--border);
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin-bottom: var(--space-5);
+  font-size: 14px;
+  color: var(--body);
+  margin: 0;
 }
 
 .hero-badge .dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #34d399;
-  box-shadow: 0 0 8px #34d399;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.4;
-  }
+  background: var(--online);
+  box-shadow: none;
+  animation: none;
 }
 
 .hero-title {
-  font-size: clamp(2.6rem, 6.5vw, 4.8rem);
-  letter-spacing: -0.04em;
-  margin-bottom: var(--space-4);
+  font-size: 76px;
+  line-height: 1.02;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+  margin: 0;
 }
 
 .hero-tagline {
-  font-size: clamp(1.02rem, 1.8vw, 1.25rem);
-  color: var(--text-muted);
-  max-width: 560px;
-  margin-bottom: var(--space-6);
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--body);
+  max-width: 540px;
+  margin: 0;
 }
 
 .hero-tagline strong {
-  color: var(--text);
+  color: var(--ink);
   font-weight: 600;
 }
 
 .hero-cta {
   display: flex;
-  gap: var(--space-3);
+  gap: 12px;
   flex-wrap: wrap;
-  margin-bottom: var(--space-5);
+  margin: 0;
 }
 
-.hero-strip {
+.hero-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.skill-pill {
   font-family: var(--font-mono);
-  font-size: 0.82rem;
-  color: var(--text-faint);
-  margin-bottom: var(--space-5);
-}
-
-.hero-strip span {
-  white-space: nowrap;
-}
-
-.hero-strip .sep {
-  color: var(--accent);
-  margin-inline: 0.55em;
+  font-size: 12.5px;
+  line-height: 1.4;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: var(--sand);
+  border: 1px solid var(--border);
+  color: var(--body);
 }
 
 .hero-social {
   justify-content: flex-start;
 }
 
-/* Hero stage */
+/* Hero stage: square, holds the cream circle the cat stands on */
 .hero-stage {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 340px;
+  flex: 1 1 360px;
+  width: 100%;
+  max-width: 440px;
+  aspect-ratio: 1;
+  margin-inline: auto;
+}
+
+.hero-cat-circle {
+  position: absolute;
+  inset: 4%;
+  border-radius: 50%;
+  background: var(--sand-deep);
+}
+
+/* Position marker the 3D cat glides to; never covers content.
+   Starts 76% down the stage so the cat's feet land on the lower part
+   of the cream circle (the spec's 60%-down rule then applies to this box).
+   This is the only anchor: past the hero the cat stays docked bottom-right. */
+.hero-anchor {
+  position: absolute;
+  inset: 76% 0 0 0;
+  pointer-events: none;
+}
+
+/* ---------- 3D cat layer (decorative, never interactive) ---------- */
+.cat-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.cat-layer.is-ready {
+  opacity: 1;
+}
+
+.cat-layer canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.footer-credit {
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  margin-top: var(--space-3);
+}
+
+.footer-credit a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Hero buttons: spec size and weight */
+.hero .btn {
+  font-size: 16px;
+  font-weight: 600;
+  min-height: 52px;
+  padding: 0 28px;
+  border-radius: 999px;
+}
+
+.hero .btn--primary {
+  background: var(--accent);
+  color: var(--accent-text-on);
+  box-shadow: none;
+  filter: none;
+}
+
+.hero .btn--primary:hover {
+  transform: none;
+  filter: brightness(1.08);
+  box-shadow: none;
+  color: var(--accent-text-on);
+}
+
+.hero .btn--ghost {
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  color: var(--ink);
+}
+
+.hero .btn--ghost:hover {
+  background: var(--sand);
+  border-color: var(--border-strong);
+  transform: none;
+}
+
+/* Hero social icons: 44px circles, 18px stroke icons */
+.hero .social-row {
+  gap: 12px;
+}
+
+.hero .social-row a {
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--body);
+}
+
+.hero .social-row a:hover {
+  background: var(--sand);
+  border-color: var(--border);
+  color: var(--accent);
+  transform: none;
+}
+
+.hero .social-row svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Visible focus ring on every control (spec: 2px accent, 3px offset) */
+.hero a:focus-visible,
+.hero button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-pill);
 }
 
 /* ---------- Buttons ---------- */
@@ -1390,468 +1522,6 @@ html.js .reveal.is-visible {
   color: var(--accent);
 }
 
-/* ---------- Cat ---------- */
-.cat {
-  display: block;
-  overflow: visible;
-}
-
-/* Hero cat */
-.cat--hero {
-  width: clamp(240px, 26vw, 340px);
-  height: auto;
-  position: relative;
-  z-index: 1;
-  animation: cat-float 6s ease-in-out infinite;
-}
-
-/* 3D Cat Hero Stage */
-.cat-3d-stage {
-  position: relative;
-  width: clamp(280px, 32vw, 420px);
-  height: clamp(280px, 32vw, 420px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-  cursor: pointer;
-}
-
-.cat-3d-stage canvas {
-  width: 100% !important;
-  height: 100% !important;
-  display: block;
-  outline: none;
-  filter: drop-shadow(0 16px 36px rgba(255, 143, 64, 0.2));
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.cat-3d-stage:hover canvas {
-  transform: scale(1.035);
-}
-
-/* Seamless 2D fallback: hide SVG if 3D is active, hide canvas if 3D failed */
-.cat-3d-stage.is-loaded .cat--hero {
-  display: none !important;
-}
-
-.cat-3d-stage:not(.is-loaded) canvas {
-  display: none !important;
-}
-
-/* Ambient glow ring behind 3D Cat */
-.cat-3d-stage::before {
-  content: "";
-  position: absolute;
-  width: 78%;
-  height: 78%;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
-  filter: blur(32px);
-  z-index: -1;
-  pointer-events: none;
-  animation: glow-pulse 4.5s ease-in-out infinite alternate;
-}
-
-@keyframes glow-pulse {
-  0% {
-    transform: scale(0.92);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(1.15);
-    opacity: 0.95;
-  }
-}
-
-/* Fluid cursor canvas */
-#fluid-cursor-canvas {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 2;
-}
-
-@keyframes cat-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-/* Companion cat */
-.companion {
-  position: fixed;
-  right: 18px;
-  bottom: 14px;
-  z-index: 80;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: var(--space-2);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.companion:hover {
-  transform: translateY(-4px) scale(1.02);
-}
-
-.companion .cat--mini {
-  animation: corner-cat-breathe 4.5s ease-in-out infinite;
-}
-
-@keyframes corner-cat-breathe {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-.cat-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  line-height: 0;
-  transition: transform var(--transition);
-}
-
-.cat-button:hover .cat,
-.cat-button:focus-visible .cat {
-  transform: translateY(-3px);
-}
-
-.cat--mini {
-  width: 76px;
-  height: auto;
-  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.25));
-}
-
-/* Wave the near paw when the hero cat is hovered/waved at */
-.cat:hover .cat-paw-front,
-.cat-button:focus-visible .cat-paw-front,
-.cat-button.is-happy .cat-paw-front {
-  transform-origin: 100% 90%;
-  animation: cat-wave 0.9s ease-in-out 2;
-}
-
-@keyframes cat-wave {
-  0%,
-  100% {
-    transform: rotate(0);
-  }
-  30% {
-    transform: rotate(-28deg);
-  }
-  60% {
-    transform: rotate(6deg);
-  }
-}
-
-.cat-button.is-happy .cat {
-  animation: cat-bounce 0.55s ease-in-out;
-}
-
-@keyframes cat-bounce {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-10px);
-  }
-}
-
-/* Tail + ears + blink */
-.cat-tail {
-  transform-origin: 90% 88%;
-  animation: cat-tail-sway 3.6s ease-in-out infinite;
-}
-
-@keyframes cat-tail-sway {
-  0%,
-  100% {
-    transform: rotate(-3deg);
-  }
-  50% {
-    transform: rotate(4deg);
-  }
-}
-
-.cat-ear-l {
-  transform-origin: 118px 42px;
-  animation: cat-ear-twitch 7s ease-in-out infinite;
-}
-
-@keyframes cat-ear-twitch {
-  0%,
-  88%,
-  100% {
-    transform: rotate(0);
-  }
-  91% {
-    transform: rotate(-7deg);
-  }
-  94% {
-    transform: rotate(3deg);
-  }
-}
-
-.cat-eyes {
-  animation: cat-blink 5.4s infinite;
-  transform-origin: 120px 60px;
-}
-
-@keyframes cat-blink {
-  0%,
-  93%,
-  100% {
-    transform: scaleY(1);
-  }
-  95.5% {
-    transform: scaleY(0.08);
-  }
-}
-
-.cat-pupils {
-  transition: transform 0.15s ease-out;
-}
-
-.cat-pupil {
-  /* JS nudges the pupils group toward the cursor; static default is fine */
-  transition: transform 0.15s ease-out;
-}
-
-/* Speech bubble (absolute so it never reflows page content) */
-.cat-bubble {
-  position: absolute;
-  bottom: calc(100% + 8px);
-  right: 0;
-  width: max-content;
-  max-width: 250px;
-  min-width: 140px;
-  padding: 0.6rem 0.9rem;
-  border-radius: 12px;
-  background: var(--bg-glass);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border-strong);
-  box-shadow: var(--shadow-card);
-  color: var(--text);
-  font-size: 0.84rem;
-  line-height: 1.4;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(6px) scale(0.96);
-  transform-origin: bottom right;
-  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
-  pointer-events: none;
-  text-align: left;
-}
-
-.cat-bubble::after {
-  content: "";
-  position: absolute;
-  right: 16px;
-  bottom: -5px;
-  width: 9px;
-  height: 9px;
-  transform: rotate(45deg);
-  background: var(--bg-glass);
-  border-right: 1px solid var(--border-strong);
-  border-bottom: 1px solid var(--border-strong);
-}
-
-.cat-bubble.is-visible {
-  opacity: 1;
-  visibility: visible;
-  transform: none;
-}
-
-/* Companion tools */
-.cat-tools {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.cat-tool {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--border);
-  background: var(--bg-card);
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: color var(--transition), border-color var(--transition), background var(--transition);
-}
-
-.cat-tool:hover {
-  color: var(--text);
-  border-color: var(--border-strong);
-  background: var(--bg-card-hover);
-}
-
-.cat-tool svg {
-  width: 14px;
-  height: 14px;
-  stroke: currentColor;
-  fill: none;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-/* Muted state swaps icons */
-.cat-tool[aria-pressed="true"] .icon-bell {
-  display: none;
-}
-.cat-tool[aria-pressed="false"] .icon-bell-off {
-  display: none;
-}
-
-.cat--mood-muted .cat-mouth {
-  opacity: 0.4;
-}
-
-/* 2D Accessories inside corner cat SVG */
-.cat-item {
-  display: none;
-  transform-origin: 120px 80px;
-  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.companion[data-accessory="glasses"] .cat-item--glasses,
-.companion[data-accessory="all"] .cat-item--glasses {
-  display: block;
-}
-
-.companion[data-accessory="bowtie"] .cat-item--bowtie,
-.companion[data-accessory="all"] .cat-item--bowtie {
-  display: block;
-}
-
-.companion[data-accessory="badge"] .cat-item--badge,
-.companion[data-accessory="all"] .cat-item--badge {
-  display: block;
-}
-
-.companion[data-accessory="coffee"] .cat-item--coffee,
-.companion[data-accessory="all"] .cat-item--coffee {
-  display: block;
-}
-
-/* Coffee steam animation */
-.cat-steam {
-  animation: steam-rise 2.2s ease-in-out infinite;
-}
-
-@keyframes steam-rise {
-  0% {
-    transform: translateY(0);
-    opacity: 0.2;
-  }
-  50% {
-    opacity: 0.9;
-  }
-  100% {
-    transform: translateY(-8px);
-    opacity: 0;
-  }
-}
-
-/* Companion travel / section dash animation */
-.companion.is-traveling {
-  animation: companion-leap 0.75s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-@keyframes companion-leap {
-  0% {
-    transform: translateY(0) scale(1);
-  }
-  25% {
-    transform: translateY(8px) scale(1.12, 0.88);
-  }
-  50% {
-    transform: translateY(-24px) scale(0.92, 1.08) rotate(-7deg);
-  }
-  75% {
-    transform: translateY(3px) scale(1.04, 0.96) rotate(2deg);
-  }
-  100% {
-    transform: translateY(0) scale(1) rotate(0deg);
-  }
-}
-
-.companion.is-traveling .cat-bubble {
-  opacity: 0 !important;
-}
-
-/* Arrived / happy landing pulse */
-.companion.is-settling .cat-button {
-  animation: cat-settle 0.6s ease-out;
-}
-
-@keyframes cat-settle {
-  0% {
-    transform: scale(0.92);
-  }
-  50% {
-    transform: scale(1.08);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* Restore chip after dismissing the cat */
-.cat-restore {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  z-index: 80;
-  width: 42px;
-  height: 42px;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--border-strong);
-  background: var(--bg-glass);
-  color: var(--accent);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform var(--transition), border-color var(--transition);
-}
-
-.cat-restore[hidden] {
-  display: none !important;
-}
-
-.cat-restore svg {
-  width: 18px;
-  height: 18px;
-  stroke: currentColor;
-  fill: none;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.cat-restore:hover {
-  transform: translateY(-2px);
-  border-color: var(--accent);
-}
 
 /* ---------- Project detail pages ---------- */
 .project-page {
@@ -1971,21 +1641,6 @@ html.js .reveal.is-visible {
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
-  .hero-inner {
-    grid-template-columns: 1fr;
-    padding-block: var(--space-6) var(--space-4);
-  }
-
-  .hero-stage {
-    order: 2;
-    min-height: 240px;
-    margin-top: var(--space-2);
-  }
-
-  .cat--hero {
-    width: clamp(180px, 30vw, 240px);
-  }
-
   .about-grid {
     grid-template-columns: 1fr;
     gap: var(--space-6);
@@ -2013,7 +1668,35 @@ html.js .reveal.is-visible {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-inner {
+    gap: 32px;
+  }
+
+  .hero-stage {
+    max-width: 360px;
+  }
+}
+
+/* below 768px the cat is smaller and docks bottom-right */
+@media (max-width: 767.98px) {
+  /* Hero: title scales down; the cat docks bottom-right, so no empty circle */
+  .hero-title {
+    font-size: 48px;
+  }
+
+  .hero-cat-circle {
+    display: none;
+  }
+
+  .hero-stage {
+    display: none;
+  }
+
   .nav .nav-links {
     position: fixed;
     top: var(--nav-height);
@@ -2081,16 +1764,6 @@ html.js .reveal.is-visible {
     order: -1;
   }
 
-  /* Companion: smaller, keep clear of footer text */
-  .companion {
-    right: 12px;
-    bottom: 10px;
-  }
-
-  .cat--mini {
-    width: 62px;
-  }
-
   .footer {
     padding-bottom: 8rem;
   }
@@ -2102,6 +1775,13 @@ html.js .reveal.is-visible {
 }
 
 @media (max-width: 480px) {
+  .hero-title {
+    font-size: 40px;
+  }
+
+  .hero-tagline {
+    font-size: 18px;
+  }
   .hero-cta .btn,
   .btn-row .btn {
     width: 100%;
@@ -2132,11 +1812,4 @@ html.js .reveal.is-visible {
     transform: none;
   }
 
-  /* Cat holds its static pose */
-  .cat--hero,
-  .cat-tail,
-  .cat-ear-l,
-  .cat-eyes {
-    animation: none !important;
-  }
 }
