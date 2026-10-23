@@ -1,50 +1,30 @@
 # AGENTS.md
 
-Static portfolio site — vanilla HTML/CSS/JS, no build step, no package manager, no tests. Deploys to GitHub Pages at `https://hrishikeshkini.github.io/portfolio/` on every push to `main`. One CI workflow exists for blog content refresh (see "CI / Automation" below).
+## Project Overview
 
-## Structure
+This is the personal portfolio website for Hrishikesh Kini, hosted on GitHub Pages and accessible at `https://imhrishikeshkini.com`.
 
-- `index.html` — the only landing page: hero with 3D particle logo, about, skills grid, experience timeline, filterable projects grid, blog feed, education, contact.
-- `projects/*.html` — 21 self-contained project detail pages. Plain pages (not iframes). Each loads shared assets via relative `../assets/...` paths and contains the project's GitHub / Live Demo links.
-- `assets/css/style.css` — entire design system. CSS custom properties; `[data-theme="dark"]` is default, `[data-theme="light"]` overrides via `:root`/attribute selectors.
-- `assets/js/main.js` — theme toggle (persisted in `localStorage` key `hk-theme`), nav scroll state + mobile burger, scroll-spy, project filtering, scroll reveals, blog feed renderer, image error fallbacks, footer year.
-- `assets/js/logo3d.js` — ES module (`type="module"`), loaded only on `index.html`. Builds a particle "HK" monogram with Three.js; imports `../vendor/three/three.module.js`. Scales particle count down on mobile (2500 vs 6000). Exits silently if WebGL is unavailable or `prefers-reduced-motion` is set. Listens for the `hk-themechange` CustomEvent that `main.js` dispatches on theme toggle to recolor particles.
-- `assets/data/blogs.json` — Medium RSS feed snapshot. Rendered client-side by `main.js` via `initBlogs()`. **Do not hardcode blog content in HTML** — edit the JSON or trigger the CI refresh.
-- `assets/vendor/three/three.module.js` — vendored Three.js r160. Don't modify.
-- `resume.pdf` — served publicly; linked from the Hero and Contact sections with the `download` attribute.
+It is a **static HTML/CSS/JS site** with no build step, bundler, or server-side runtime. All files are deployed as-is to the `main` branch.
 
-## Gotchas
+## Directory Structure
 
-- **Relative paths only.** The site is served under the `/portfolio/` subpath, so every `href`/`src` must be relative (`assets/...`, `../assets/...`). Absolute paths silently 404 on GitHub Pages.
-- Every page (index and project) must keep the inline theme pre-paint `<script>` in `<head>` — it sets `data-theme` from `localStorage` before CSS paints to avoid a flash of the wrong theme.
-- `logo3d.js` is an ES module, so the site must be served over HTTP (`file://` breaks module imports).
-- When the 3D logo initializes successfully it adds `logo3d-active` to `<body>`, which hides the static `.logo-fallback` monogram in the hero.
-- `.thumb-fallback` (gradient placeholder with `data-initials`) is used intentionally where a thumbnail image doesn't exist; `main.js` also swaps it in automatically when a `.project-thumb img` fails to load.
-- The footer year is stamped by `main.js` via the `[data-year]` attribute.
-- **Project cards are rich**: each card in `index.html` carries the GitHub / Live Demo external links (`.project-links` > `.card-link`) in addition to the write-up link. Keep them in sync when updating `projects/*.html`.
+- `/` (Root): `index.html` (main landing page), `favicon.png`, `CNAME` (custom domain config), and resume PDFs.
+- `/projects`: Individual HTML pages for each project listed on the main site. When adding a new project, create a corresponding HTML file here and update the projects section in `index.html`.
+- `/assets/css`: Stylesheets. `style.css` handles core styles, design tokens, and fluid responsiveness.
+- `/assets/js`: JavaScript files. `main.js` handles global interactions (scrolling, theme toggle, blog feed from Medium, etc.). `cat3d.js` implements the interactive 3D cat logo on the landing page and navbar using vanilla Three.js per `SKILL.md`. `fluid-cursor.js` provides the luminous ember cursor trail and 3D card tilt spotlight. `cat.js` implements the companion dialogue and reactions.
+- `/assets/vendor`: Third-party libraries (Bootstrap, jQuery, etc.). Do not modify files here directly.
 
-## CI / Automation
+## Implementation & Deployment
 
-`.github/workflows/update-blogs.yml` runs daily:
-1. Fetches the Medium RSS feed (`https://medium.com/feed/@hrishikeshkini`).
-2. Regenerates `assets/data/blogs.json`.
-3. Commits the updated file to `main`, triggering a redeploy.
+- **Local Development**: Open `index.html` directly in a web browser. If using a local server, run it from the root directory.
+- **Deployment**: Automatic. GitHub Pages serves the `main` branch directly.
+- **Domain**: The site uses a custom domain (`imhrishikeshkini.com`) configured via the `CNAME` file and GitHub Pages settings.
+- **Content Updates**: 
+  - Bio, experience, and skills are hardcoded directly in `index.html`.
+  - Blog posts are dynamically fetched from Medium via the `assets/data/blogs.json` configuration.
+  - To update the resume, replace the PDF file in the root directory and ensure the link in `index.html` points to the correct filename.
 
-You don't need to manually refresh blogs.json unless you want to force an immediate sync (run the same Python logic locally).
+## Conventions
 
-## Adding a project
-
-1. Create `projects/<name>.html` by copying an existing page (e.g. `projects/mlops.html`) and changing the title, tags, links, and body. Keep the head/nav/footer structure and the theme pre-paint script intact.
-2. Add a card to the `.projects-grid` in `index.html` with `data-category` set from: `genai`, `ml`, `mlops`, `data`, `cv` (space-separated for multiple). Include `.project-links` with the GitHub / Live Demo icon buttons.
-3. Thumbnail: use `assets/img/project/<name>.jpg`, or a `.thumb-fallback` div with `data-initials` if no image exists.
-
-## Local preview
-
-Serve the repo root with an HTTP server (e.g. `python3 -m http.server`) and open `http://localhost:8000/`. URLs match the relative-path layout but not the `/portfolio/` subpath — that's expected.
-
-## Design conventions
-
-- Fonts: Inter (body), Space Grotesk (display/headings), JetBrains Mono (chips/code) via Google Fonts.
-- Accent: blue → violet gradient (`--accent-grad`); use `.gradient-text` for highlighted words in headings.
-- Sections use `.section` (padding + z-index) and `.section--soft` (alternating background); cards use `.card` + `.card--hover`; scroll reveals use `.reveal` (+ `.reveal-delay-1..3`).
-- Blog cards use `.blog-card` (inside `.blog-grid`), populated by `initBlogs()` in `main.js`.
+- Keep all code self-contained. Avoid introducing complex build tooling (like Webpack or React) unless explicitly requested, as this project is optimized for simplicity and GitHub Pages static hosting.
+- Ensure new project pages follow the layout and style of existing files in `/projects` for visual consistency.

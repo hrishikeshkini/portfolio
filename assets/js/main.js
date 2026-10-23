@@ -6,6 +6,10 @@
 (function () {
   "use strict";
 
+  // Gate JS-dependent styling (scroll reveals). Without this class,
+  // everything stays visible and readable — no-JS is a first-class state.
+  document.documentElement.classList.add("js");
+
   /* ---------------- Theme ---------------- */
   const THEME_KEY = "hk-theme";
   const root = document.documentElement;
@@ -97,27 +101,6 @@
     }
   }
 
-  /* ---------------- Project filtering ---------------- */
-  function initFilters() {
-    const bar = document.querySelector(".filter-bar");
-    const grid = document.querySelector(".projects-grid");
-    if (!bar || !grid) return;
-
-    const cards = Array.prototype.slice.call(grid.querySelectorAll(".project-card"));
-    bar.querySelectorAll(".filter-btn").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        bar.querySelectorAll(".filter-btn").forEach(function (b) {
-          b.classList.toggle("is-active", b === btn);
-        });
-        const f = btn.getAttribute("data-filter");
-        cards.forEach(function (card) {
-          const cats = (card.getAttribute("data-category") || "").split(" ");
-          card.classList.toggle("is-hidden", f !== "*" && cats.indexOf(f) === -1);
-        });
-      });
-    });
-  }
-
   /* ---------------- Scroll reveal ---------------- */
   function initReveals() {
     const els = document.querySelectorAll(".reveal");
@@ -202,15 +185,25 @@
       });
   }
 
+  /* ---------------- Companion loader across pages ---------------- */
+  function initCompanion() {
+    if (document.getElementById("companion")) return;
+    const isProject = window.location.pathname.indexOf("/projects/") !== -1;
+    const s = document.createElement("script");
+    s.src = isProject ? "../assets/js/cat.js" : "assets/js/cat.js";
+    s.defer = true;
+    document.body.appendChild(s);
+  }
+
   /* ---------------- Boot ---------------- */
   function init() {
     initThemeToggle();
     initNav();
-    initFilters();
     initReveals();
     initYear();
     initImgFallbacks();
     initBlogs();
+    initCompanion();
   }
 
   if (document.readyState === "loading") {
