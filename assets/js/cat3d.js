@@ -33,54 +33,57 @@ import * as THREE from "../vendor/three/three.module.js";
   );
 
   /* =========================================================
-     PALETTES & THEME CONFIGURATION
+     PALETTES & THEME CONFIGURATION (The AI Engineer's Workshop)
+     Orange & White Mascot matching reference photos
      ========================================================= */
   const THEMES = {
     dark: {
-      body: 0x221e1b,
-      bodyRoughness: 0.42,
-      bodyMetalness: 0.1,
-      chest: 0x362e28,
-      innerEar: 0xff8f40,
-      innerEarCavity: 0xe05615,
-      eyeGlow: 0xffa44a,
-      pupil: 0x070605,
-      collar: 0xff8f40,
-      bell: 0xffc480,
-      chairShell: 0x161311,
-      chairStem: 0x484038,
-      cushion: 0x2e241c,
-      cushionTrim: 0xff8f40,
-      keyLight: 0xffecd6,
-      keyIntensity: 2.1,
-      fillLight: 0x4a3b32,
-      fillIntensity: 1.0,
-      rimLight: 0xff7b29,
-      rimIntensity: 3.4,
+      body: 0xe86c23,          // Warm ginger-orange fur
+      bodyRoughness: 0.48,
+      bodyMetalness: 0.02,
+      chest: 0xfffaf2,         // Crisp warm ivory white bib & paws
+      innerEar: 0xf472b6,      // Sweet soft pink ear cavity
+      innerEarCavity: 0xec4899,
+      nose: 0xf472b6,          // Pink button nose
+      eyeGlow: 0xf59e0b,       // Bright golden-amber feline eyes
+      pupil: 0x12100f,         // Deep glossy pupil
+      collar: 0xf0652b,        // Terracotta workshop collar
+      bell: 0xfbbf24,          // Gold brass pendant
+      chairShell: 0x1c1a18,    // Matte smoked dark workshop pod
+      chairStem: 0x484038,     // Titanium champagne stem
+      cushion: 0xb84314,       // Deep terracotta velvet cushion
+      cushionTrim: 0xf0652b,
+      keyLight: 0xffeedd,
+      keyIntensity: 2.2,
+      fillLight: 0x5a483e,
+      fillIntensity: 1.1,
+      rimLight: 0xf0652b,      // Warm terracotta rim light
+      rimIntensity: 3.2,
       sparkColor: 0xff9a47,
     },
     light: {
-      body: 0xf3eee5,
-      bodyRoughness: 0.46,
-      bodyMetalness: 0.04,
-      chest: 0xffffff,
-      innerEar: 0xc2410c,
-      innerEarCavity: 0x9a3412,
-      eyeGlow: 0xd97706,
-      pupil: 0x181411,
-      collar: 0xc2410c,
-      bell: 0xd97706,
-      chairShell: 0xffffff,
-      chairStem: 0xa8a29e,
-      cushion: 0xebdccb,
-      cushionTrim: 0xc2410c,
-      keyLight: 0xffffff,
-      keyIntensity: 2.2,
-      fillLight: 0xded5c8,
-      fillIntensity: 0.8,
-      rimLight: 0xe05615,
-      rimIntensity: 2.4,
-      sparkColor: 0xc2410c,
+      body: 0xe86c23,          // Warm ginger-orange fur (consistent identity)
+      bodyRoughness: 0.5,
+      bodyMetalness: 0.02,
+      chest: 0xfffaf2,         // Crisp warm ivory white bib & paws
+      innerEar: 0xf472b6,
+      innerEarCavity: 0xec4899,
+      nose: 0xf472b6,
+      eyeGlow: 0xf59e0b,
+      pupil: 0x181412,
+      collar: 0xd9470b,
+      bell: 0xf59e0b,
+      chairShell: 0xfffcf8,    // Warm ivory ceramic pod
+      chairStem: 0xc8beb0,     // Warm brushed champagne stem
+      cushion: 0xd9470b,       // Rich terracotta velvet cushion
+      cushionTrim: 0xb83805,
+      keyLight: 0xfff8f0,
+      keyIntensity: 2.4,
+      fillLight: 0xe6ddd0,
+      fillIntensity: 0.9,
+      rimLight: 0xd9470b,
+      rimIntensity: 2.6,
+      sparkColor: 0xd9470b,
     },
   };
 
@@ -310,17 +313,17 @@ import * as THREE from "../vendor/three/three.module.js";
 
     catRoot.add(leftHaunch, rightHaunch);
 
-    // Front Paws (resting neatly over cushion front)
+    // Front Paws (White mittens/paws matching reference photos)
     const pawGeo = new THREE.SphereGeometry(0.12, 16, 12);
     pawGeo.scale(1.0, 0.58, 1.35);
 
-    const leftPaw = new THREE.Mesh(pawGeo, bodyMat);
+    const leftPaw = new THREE.Mesh(pawGeo, chestMat);
     leftPaw.position.set(-0.18, 0.28, 0.48);
 
-    const rightPaw = new THREE.Mesh(pawGeo, bodyMat);
+    const rightPaw = new THREE.Mesh(pawGeo, chestMat);
     rightPaw.position.set(0.18, 0.28, 0.48);
 
-    // Delicate sculpted toe lobes on paws
+    // Delicate sculpted toe lobes on white paws
     const toeGeo = new THREE.SphereGeometry(0.038, 10, 8);
     toeGeo.scale(1, 0.8, 1.1);
 
@@ -350,7 +353,7 @@ import * as THREE from "../vendor/three/three.module.js";
     gem.position.set(0, 0.92, 0.52);
     catRoot.add(gem);
 
-    // Curled Tail looping gracefully over chair rim
+    // Curled Tail looping gracefully over chair rim with white tail tip
     const tailGroup = new THREE.Group();
     tailGroup.position.set(0.44, 0.36, -0.06);
 
@@ -360,14 +363,14 @@ import * as THREE from "../vendor/three/three.module.js";
     const tailMesh = new THREE.Mesh(tailGeo, bodyMat);
     tailGroup.add(tailMesh);
 
-    const tailTip = new THREE.Mesh(new THREE.SphereGeometry(0.062, 12, 12), innerEarMat);
+    const tailTip = new THREE.Mesh(new THREE.SphereGeometry(0.062, 12, 12), chestMat);
     tailTip.position.set(0.26, -0.2, 0.38);
     tailGroup.add(tailTip);
 
     catRoot.add(tailGroup);
 
     /* =========================================================
-       3. REALISTIC FELINE HEAD
+       3. REALISTIC FELINE HEAD (Expressive Orange & White Mascot)
        ========================================================= */
     const headGroup = new THREE.Group();
     headGroup.position.set(0, 1.18, 0.18);
@@ -379,12 +382,12 @@ import * as THREE from "../vendor/three/three.module.js";
     const headMesh = new THREE.Mesh(headGeo, bodyMat);
     headGroup.add(headMesh);
 
-    // Distinct Cheeks / Feline Jowls
+    // White Muzzle & Fluffy Cheeks (matching reference photos)
     const cheekGeo = new THREE.SphereGeometry(0.22, 18, 14);
     cheekGeo.scale(1.18, 0.88, 0.88);
-    const leftCheek = new THREE.Mesh(cheekGeo, bodyMat);
+    const leftCheek = new THREE.Mesh(cheekGeo, chestMat);
     leftCheek.position.set(-0.24, -0.12, 0.38);
-    const rightCheek = new THREE.Mesh(cheekGeo, bodyMat);
+    const rightCheek = new THREE.Mesh(cheekGeo, chestMat);
     rightCheek.position.set(0.24, -0.12, 0.38);
     headGroup.add(leftCheek, rightCheek);
 
@@ -397,22 +400,27 @@ import * as THREE from "../vendor/three/three.module.js";
     rightMuzzle.position.set(0.1, -0.16, 0.52);
     headGroup.add(leftMuzzle, rightMuzzle);
 
-    // Triangular Feline Nose with Nostril Accents
+    // Triangular Soft Pink Feline Button Nose
+    const noseMat = new THREE.MeshStandardMaterial({
+      color: pal.nose,
+      roughness: 0.35,
+      metalness: 0.05,
+    });
     const noseGeo = new THREE.ConeGeometry(0.062, 0.075, 3);
     noseGeo.rotateZ(Math.PI);
     noseGeo.scale(1.2, 0.8, 0.6);
-    const nose = new THREE.Mesh(noseGeo, innerEarMat);
+    const nose = new THREE.Mesh(noseGeo, noseMat);
     nose.position.set(0, -0.11, 0.61);
     headGroup.add(nose);
 
-    // Delicate Chin
+    // Delicate White Chin
     const chinGeo = new THREE.SphereGeometry(0.09, 12, 10);
     chinGeo.scale(1, 0.7, 0.8);
-    const chin = new THREE.Mesh(chinGeo, bodyMat);
+    const chin = new THREE.Mesh(chinGeo, chestMat);
     chin.position.set(0, -0.24, 0.48);
     headGroup.add(chin);
 
-    // Pointed Realistic Ears with Cavity
+    // Pointed Realistic Ears with Pink Cavity & White Trim
     const earOuterGeo = new THREE.ConeGeometry(0.24, 0.52, 4);
     earOuterGeo.rotateY(Math.PI / 4);
     earOuterGeo.scale(1, 1, 0.44);
@@ -438,9 +446,9 @@ import * as THREE from "../vendor/three/three.module.js";
 
     headGroup.add(leftEar, rightEar);
 
-    // Expressive Almond Feline Eyes
+    // Expressive Sparkling Golden-Amber Eyes (matching reference photos)
     const eyeOuterGeo = new THREE.SphereGeometry(0.13, 22, 18);
-    eyeOuterGeo.scale(1.22, 0.92, 0.55);
+    eyeOuterGeo.scale(1.22, 0.95, 0.55);
 
     const leftEye = new THREE.Mesh(eyeOuterGeo, eyeMat);
     leftEye.position.set(-0.24, 0.06, 0.46);
@@ -450,9 +458,9 @@ import * as THREE from "../vendor/three/three.module.js";
     rightEye.position.set(0.24, 0.06, 0.46);
     rightEye.rotation.set(0, 0.12, -0.08);
 
-    // Vertical Cat Slit Pupils (depth tracked in eye socket)
-    const pupilGeo = new THREE.SphereGeometry(0.065, 14, 14);
-    pupilGeo.scale(0.38, 1.5, 0.42);
+    // Large Soulful Kitten Pupils
+    const pupilGeo = new THREE.SphereGeometry(0.068, 16, 16);
+    pupilGeo.scale(0.85, 0.95, 0.45);
 
     const leftPupil = new THREE.Mesh(pupilGeo, pupilMat);
     leftPupil.position.set(0, 0, 0.065);
@@ -462,15 +470,21 @@ import * as THREE from "../vendor/three/three.module.js";
     rightPupil.position.set(0, 0, 0.065);
     rightEye.add(rightPupil);
 
-    // Specular Catchlights (lifelike soul in eyes)
-    const glintGeo = new THREE.SphereGeometry(0.022, 8, 8);
-    const leftGlint = new THREE.Mesh(glintGeo, glintMat);
-    leftGlint.position.set(0.04, 0.045, 0.08);
-    leftEye.add(leftGlint);
+    // Specular Catchlights (sparkling eyes like in the photos)
+    const glintGeo = new THREE.SphereGeometry(0.024, 8, 8);
+    const glintSmallGeo = new THREE.SphereGeometry(0.012, 8, 8);
 
-    const rightGlint = new THREE.Mesh(glintGeo, glintMat);
-    rightGlint.position.set(0.04, 0.045, 0.08);
-    rightEye.add(rightGlint);
+    const leftGlint1 = new THREE.Mesh(glintGeo, glintMat);
+    leftGlint1.position.set(0.038, 0.048, 0.08);
+    const leftGlint2 = new THREE.Mesh(glintSmallGeo, glintMat);
+    leftGlint2.position.set(-0.02, -0.032, 0.08);
+    leftEye.add(leftGlint1, leftGlint2);
+
+    const rightGlint1 = new THREE.Mesh(glintGeo, glintMat);
+    rightGlint1.position.set(0.038, 0.048, 0.08);
+    const rightGlint2 = new THREE.Mesh(glintSmallGeo, glintMat);
+    rightGlint2.position.set(-0.02, -0.032, 0.08);
+    rightEye.add(rightGlint1, rightGlint2);
 
     headGroup.add(leftEye, rightEye);
 
@@ -511,6 +525,53 @@ import * as THREE from "../vendor/three/three.module.js";
 
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
     scene.add(ambientLight);
+
+    /* =========================================================
+       FLOATING AI INTERFACE ELEMENTS (The AI Workshop)
+       Subtle holographic orbital data nodes: LLM, RAG, Agent, MLOps
+       ========================================================= */
+    const aiChips = [];
+    const chipMat = new THREE.MeshStandardMaterial({
+      color: pal.cushionTrim,
+      emissive: pal.cushionTrim,
+      emissiveIntensity: 0.65,
+      roughness: 0.3,
+      metalness: 0.2,
+      transparent: true,
+      opacity: 0.85,
+    });
+    const chipCoreMat = new THREE.MeshBasicMaterial({
+      color: 0xffffff,
+    });
+
+    for (let i = 0; i < 4; i++) {
+      const chipGroup = new THREE.Group();
+
+      // Outer micro-disc
+      const diskGeo = new THREE.CylinderGeometry(0.14, 0.14, 0.02, 20);
+      diskGeo.rotateX(Math.PI / 2);
+      const diskMesh = new THREE.Mesh(diskGeo, chipMat);
+      chipGroup.add(diskMesh);
+
+      // Glowing data node point
+      const coreGeo = new THREE.SphereGeometry(0.04, 10, 10);
+      const coreMesh = new THREE.Mesh(coreGeo, chipCoreMat);
+      coreMesh.position.set(0, 0, 0.018);
+      chipGroup.add(coreMesh);
+
+      // Micro halo orbit ring
+      const haloGeo = new THREE.TorusGeometry(0.18, 0.008, 8, 24);
+      const haloMesh = new THREE.Mesh(haloGeo, chipMat);
+      chipGroup.add(haloMesh);
+
+      chipGroup.baseY = 0.15 + (i % 2 === 0 ? 0.38 : -0.2);
+      chipGroup.speed = 0.32 + (i * 0.04);
+      chipGroup.radius = 1.42 + (i % 2) * 0.18;
+      chipGroup.phase = (i * Math.PI) / 2;
+
+      scene.add(chipGroup);
+      aiChips.push(chipGroup);
+    }
 
     /* =========================================================
        5. INTERACTIVE CLICK REACTION & BURST
@@ -613,6 +674,8 @@ import * as THREE from "../vendor/three/three.module.js";
       cushionMat.color.setHex(p.cushion);
 
       whiskerMat.color.setHex(nextTheme === "dark" ? 0xdddddd : 0x555555);
+      chipMat.color.setHex(p.cushionTrim);
+      chipMat.emissive.setHex(p.cushionTrim);
 
       keyLight.color.setHex(p.keyLight);
       keyLight.intensity = p.keyIntensity;
@@ -658,6 +721,16 @@ import * as THREE from "../vendor/three/three.module.js";
         targetHeadRotX,
         0.1
       );
+
+      // Floating AI Orbital Nodes
+      for (let i = 0; i < aiChips.length; i++) {
+        const c = aiChips[i];
+        const angle = clock * c.speed + c.phase;
+        c.position.x = Math.cos(angle) * c.radius;
+        c.position.z = Math.sin(angle) * c.radius;
+        c.position.y = c.baseY + Math.sin(clock * 1.5 + c.phase) * 0.08;
+        c.rotation.y = -angle + Math.PI / 2;
+      }
 
       // Subtle ear twitch
       leftEar.rotation.z =
@@ -748,7 +821,7 @@ import * as THREE from "../vendor/three/three.module.js";
   }
 
   /* =========================================================
-     NAVBAR MINI 3D CAT LOGO
+     NAVBAR MINI 3D CAT LOGO (Matching Orange & White Cat)
      ========================================================= */
   function initNavCat() {
     const canvas = document.getElementById("nav-cat-stage");
@@ -775,17 +848,21 @@ import * as THREE from "../vendor/three/three.module.js";
     const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 20);
     camera.position.set(0, 0, 3.2);
 
-    const light = new THREE.DirectionalLight(0xffffff, 1.8);
+    const light = new THREE.DirectionalLight(0xffffff, 2.0);
     light.position.set(2, 2, 3);
     scene.add(light);
-    scene.add(new THREE.AmbientLight(0xffffff, 1.0));
+    scene.add(new THREE.AmbientLight(0xffffff, 1.1));
 
     let curTheme = getCurrentTheme();
     const pal = THEMES[curTheme];
 
     const headMat = new THREE.MeshStandardMaterial({
       color: pal.body,
-      roughness: 0.4,
+      roughness: 0.45,
+    });
+    const whiteMat = new THREE.MeshStandardMaterial({
+      color: 0xfffaf2,
+      roughness: 0.5,
     });
     const earMat = new THREE.MeshStandardMaterial({
       color: pal.innerEar,
@@ -795,16 +872,38 @@ import * as THREE from "../vendor/three/three.module.js";
     const eyeMat = new THREE.MeshBasicMaterial({
       color: pal.eyeGlow,
     });
+    const noseMat = new THREE.MeshBasicMaterial({
+      color: 0xf472b6,
+    });
 
     const miniCat = new THREE.Group();
     scene.add(miniCat);
 
+    // Orange head
     const head = new THREE.Mesh(
-      new THREE.SphereGeometry(0.7, 16, 14),
+      new THREE.SphereGeometry(0.7, 18, 16),
       headMat
     );
     miniCat.add(head);
 
+    // White muzzle
+    const muzzle = new THREE.Mesh(
+      new THREE.SphereGeometry(0.32, 14, 12),
+      whiteMat
+    );
+    muzzle.scale.set(1.15, 0.75, 0.85);
+    muzzle.position.set(0, -0.16, 0.48);
+    miniCat.add(muzzle);
+
+    // Pink button nose
+    const miniNose = new THREE.Mesh(
+      new THREE.SphereGeometry(0.065, 8, 8),
+      noseMat
+    );
+    miniNose.position.set(0, -0.11, 0.68);
+    miniCat.add(miniNose);
+
+    // Ears
     const earGeo = new THREE.ConeGeometry(0.3, 0.5, 4);
     earGeo.rotateY(Math.PI / 4);
     const lEar = new THREE.Mesh(earGeo, headMat);
@@ -815,11 +914,12 @@ import * as THREE from "../vendor/three/three.module.js";
     rEar.rotation.z = -0.35;
     miniCat.add(lEar, rEar);
 
-    const eyeGeo = new THREE.SphereGeometry(0.12, 12, 10);
+    // Eyes with pupil glint
+    const eyeGeo = new THREE.SphereGeometry(0.13, 14, 12);
     const lEye = new THREE.Mesh(eyeGeo, eyeMat);
-    lEye.position.set(-0.28, 0.05, 0.62);
+    lEye.position.set(-0.28, 0.05, 0.6);
     const rEye = new THREE.Mesh(eyeGeo, eyeMat);
-    rEye.position.set(0.28, 0.05, 0.62);
+    rEye.position.set(0.28, 0.05, 0.6);
     miniCat.add(lEye, rEye);
 
     window.addEventListener("hk-themechange", function (e) {

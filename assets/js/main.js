@@ -167,21 +167,24 @@
         grid.innerHTML = posts
           .slice(0, 6)
           .map(function (p) {
+            let dateStr = p.date || "";
+            try {
+              dateStr = new Date(p.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+            } catch (e) { }
             return (
-              '<article class="card card--hover blog-card">' +
-              '<p class="blog-date">' + (p.date || "") + "</p>" +
-              '<h3><a href="' + p.link + '" target="_blank" rel="noopener">' + p.title + "</a></h3>" +
-              '<p class="blog-excerpt">' + (p.excerpt || "") + "</p>" +
+              '<article class="card card--hover blog-card reveal is-visible">' +
+              '<span class="chip">Data Science</span>' +
+              '<p class="blog-date">' + dateStr + '</p>' +
+              '<h3><a href="' + p.link + '" target="_blank" rel="noopener">' + p.title + '</a></h3>' +
+              '<p class="blog-excerpt">' + (p.excerpt || "") + '</p>' +
               '<a class="blog-link" href="' + p.link + '" target="_blank" rel="noopener">Read on Medium →</a>' +
-              "</article>"
+              '</article>'
             );
           })
           .join("");
-        const fb = grid.parentElement.querySelector(".blog-fallback");
-        if (fb) fb.remove();
       })
       .catch(function () {
-        /* keep fallback text */
+        /* keep existing static crawlable cards */
       });
   }
 

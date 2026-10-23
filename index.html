@@ -27,11 +27,11 @@
     })();
   </script>
 
-  <!-- Fonts -->
+  <!-- Editorial & Tech Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet">
 
   <link rel="stylesheet" href="assets/css/style.css">
@@ -158,15 +158,20 @@
       <a href="#" class="nav-logo" aria-label="Hrishikesh Kini — home">
         <canvas id="nav-cat-stage" width="38" height="38" class="nav-cat-stage" aria-hidden="true"></canvas>
         <svg class="icon-cat cat" viewBox="0 0 240 220" aria-hidden="true">
-          <path class="cat-tail" d="M192 178 C 228 170, 238 136, 222 110" fill="none" stroke="currentColor"
+          <path class="cat-tail" d="M192 178 C 228 170, 238 136, 222 110" fill="none" stroke="var(--cat-fur)"
             stroke-width="14" stroke-linecap="round" />
-          <path d="M54 210 L54 152 C54 102 82 64 120 64 C158 64 186 102 186 152 L186 210 Z" fill="none"
-            stroke="currentColor" stroke-width="16" stroke-linejoin="round" />
-          <path d="M88 30 L80 8 L114 22 Z" fill="currentColor" />
-          <path d="M152 30 L160 8 L126 22 Z" fill="currentColor" />
-          <circle cx="120" cy="64" r="40" fill="currentColor" />
-          <circle class="cat-eye" cx="102" cy="62" r="7" fill="var(--accent)" />
-          <circle class="cat-eye" cx="138" cy="62" r="7" fill="var(--accent)" />
+          <path d="M54 210 L54 152 C54 102 82 64 120 64 C158 64 186 102 186 152 L186 210 Z" fill="var(--cat-fur)"
+            stroke="var(--cat-stroke)" stroke-width="6" stroke-linejoin="round" />
+          <ellipse cx="120" cy="162" rx="30" ry="34" fill="var(--cat-white)" />
+          <path d="M88 30 L80 8 L114 22 Z" fill="var(--cat-fur)" />
+          <path d="M152 30 L160 8 L126 22 Z" fill="var(--cat-fur)" />
+          <path d="M90 27 L84 10 L106 22 Z" fill="var(--cat-pink)" />
+          <path d="M150 27 L156 10 L134 22 Z" fill="var(--cat-pink)" />
+          <circle cx="120" cy="64" r="40" fill="var(--cat-fur)" stroke="var(--cat-stroke)" stroke-width="3" />
+          <ellipse cx="120" cy="80" rx="18" ry="14" fill="var(--cat-white)" />
+          <path d="M115 76 L125 76 L120 81 Z" fill="var(--cat-pink)" />
+          <circle class="cat-eye" cx="102" cy="62" r="7" fill="var(--cat-amber)" />
+          <circle class="cat-eye" cx="138" cy="62" r="7" fill="var(--cat-amber)" />
         </svg>
         Hrishikesh <span class="gradient-text">Kini</span>
       </a>
@@ -259,49 +264,63 @@
 
         <div class="hero-stage" aria-hidden="true">
           <div id="cat-3d-stage" class="cat-3d-stage" title="Click me to play!">
-            <svg class="cat cat--hero" viewBox="0 0 240 220">
+            <svg class="cat cat--hero" viewBox="0 0 240 220" role="img" aria-label="3D Orange Cat Mascot">
+              <!-- Tail with white tip -->
               <g class="cat-tail">
-                <path d="M192 178 C 228 170, 238 136, 222 110" fill="none" stroke="var(--cat-stroke)" stroke-width="11"
+                <path d="M192 178 C 228 170, 238 136, 222 110" fill="none" stroke="var(--cat-fur)" stroke-width="14"
                   stroke-linecap="round" />
+                <circle cx="222" cy="110" r="8" fill="var(--cat-white)" />
               </g>
-              <path d="M54 210 L54 152 C54 102 82 64 120 64 C158 64 186 102 186 152 L186 210 Z" fill="var(--cat-fill)"
+              <!-- Ginger Torso & White Chest Bib -->
+              <path d="M54 210 L54 152 C54 102 82 64 120 64 C158 64 186 102 186 152 L186 210 Z" fill="var(--cat-fur)"
                 stroke="var(--cat-stroke)" stroke-width="3" stroke-linejoin="round" />
-              <ellipse cx="120" cy="158" rx="30" ry="36" fill="var(--accent-soft)" />
-              <rect x="88" y="188" width="28" height="22" rx="11" fill="var(--cat-fill)" stroke="var(--cat-stroke)"
-                stroke-width="3" />
+              <ellipse cx="120" cy="158" rx="34" ry="38" fill="var(--cat-white)" />
+              <!-- White Front Paws -->
+              <rect x="86" y="186" width="30" height="24" rx="12" fill="var(--cat-white)" stroke="var(--cat-stroke)"
+                stroke-width="2.5" />
               <path class="cat-paw-front"
-                d="M124 188 h26 a11 11 0 0 1 11 11 v11 a0 0 0 0 1 0 0 h-48 a0 0 0 0 1 0 0 v-11 a11 11 0 0 1 11-11 Z"
-                fill="var(--cat-fill)" stroke="var(--cat-stroke)" stroke-width="3" />
-              <rect x="92" y="106" width="56" height="10" rx="5" fill="var(--cat-eye)" />
-              <circle cx="120" cy="120" r="5.5" fill="var(--cat-eye)" />
+                d="M124 186 h28 a12 12 0 0 1 12 12 v12 h-52 v-12 a12 12 0 0 1 12-12 Z"
+                fill="var(--cat-white)" stroke="var(--cat-stroke)" stroke-width="2.5" />
+              <!-- Ears with Pink Interior -->
               <g>
-                <path class="cat-ear cat-ear-l" d="M88 34 L76 2 L116 24 Z" fill="var(--cat-fill)"
+                <path class="cat-ear cat-ear-l" d="M88 34 L76 2 L116 24 Z" fill="var(--cat-fur)"
                   stroke="var(--cat-stroke)" stroke-width="3" stroke-linejoin="round" />
-                <path class="cat-ear cat-ear-r" d="M152 34 L164 2 L124 24 Z" fill="var(--cat-fill)"
+                <path class="cat-ear cat-ear-r" d="M152 34 L164 2 L124 24 Z" fill="var(--cat-fur)"
                   stroke="var(--cat-stroke)" stroke-width="3" stroke-linejoin="round" />
-                <path d="M90 27 L84 10 L106 22 Z" fill="var(--accent-soft)" />
-                <path d="M150 27 L156 10 L134 22 Z" fill="var(--accent-soft)" />
+                <path d="M90 27 L84 10 L106 22 Z" fill="var(--cat-pink)" />
+                <path d="M150 27 L156 10 L134 22 Z" fill="var(--cat-pink)" />
               </g>
-              <circle cx="120" cy="62" r="42" fill="var(--cat-fill)" stroke="var(--cat-stroke)" stroke-width="3" />
-              <g opacity="0.55">
-                <path d="M108 26 q3 8 0 14 M120 24 q3 9 0 18 M132 26 q3 8 0 14" fill="none" stroke="var(--cat-stroke)"
-                  stroke-width="3" stroke-linecap="round" />
+              <!-- Round Ginger Head -->
+              <circle cx="120" cy="62" r="42" fill="var(--cat-fur)" stroke="var(--cat-stroke)" stroke-width="3" />
+              <!-- Tiger Forehead Stripes -->
+              <g opacity="0.6">
+                <path d="M108 26 q3 8 0 14 M120 24 q3 9 0 18 M132 26 q3 8 0 14" fill="none" stroke="var(--cat-fur-shadow)"
+                  stroke-width="3.2" stroke-linecap="round" />
               </g>
+              <!-- White Muzzle & Cheeks -->
+              <ellipse cx="106" cy="74" rx="16" ry="13" fill="var(--cat-white)" />
+              <ellipse cx="134" cy="74" rx="16" ry="13" fill="var(--cat-white)" />
+              <ellipse cx="120" cy="78" rx="14" ry="11" fill="var(--cat-white)" />
+              <!-- Sparkling Amber Eyes with Double Glints -->
               <g class="cat-eyes">
-                <circle class="cat-eye" cx="102" cy="60" r="8.5" fill="var(--cat-eye)" />
-                <circle class="cat-eye" cx="138" cy="60" r="8.5" fill="var(--cat-eye)" />
+                <circle class="cat-eye" cx="102" cy="60" r="9" fill="var(--cat-amber)" />
+                <circle class="cat-eye" cx="138" cy="60" r="9" fill="var(--cat-amber)" />
                 <g class="cat-pupils">
-                  <circle class="cat-pupil" cx="103" cy="60.5" r="3.6" fill="var(--cat-pupil)" />
-                  <circle class="cat-pupil" cx="137" cy="60.5" r="3.6" fill="var(--cat-pupil)" />
-                  <circle cx="98.6" cy="56.8" r="1.9" fill="var(--cat-pupil)" />
-                  <circle cx="134.6" cy="56.8" r="1.9" fill="var(--cat-pupil)" />
+                  <circle class="cat-pupil" cx="103" cy="60.5" r="4.2" fill="var(--cat-pupil)" />
+                  <circle class="cat-pupil" cx="137" cy="60.5" r="4.2" fill="var(--cat-pupil)" />
+                  <circle cx="99.5" cy="57" r="2.2" fill="#ffffff" />
+                  <circle cx="135.5" cy="57" r="2.2" fill="#ffffff" />
+                  <circle cx="105" cy="63.5" r="1.1" fill="#ffffff" />
+                  <circle cx="139" cy="63.5" r="1.1" fill="#ffffff" />
                 </g>
               </g>
-              <path d="M112 78 L128 78 L120 88 Z" fill="var(--cat-eye)" />
-              <path class="cat-mouth" d="M120 88 Q113 96 106 91 M120 88 Q127 96 134 91" fill="none"
+              <!-- Pink Button Nose & Smile -->
+              <path d="M114 74 L126 74 L120 81 Z" fill="var(--cat-pink)" />
+              <path class="cat-mouth" d="M120 81 Q113 88 107 84 M120 81 Q127 88 133 84" fill="none"
                 stroke="var(--cat-stroke)" stroke-width="2.5" stroke-linecap="round" />
-              <g opacity="0.45">
-                <path d="M80 64 L48 60 M80 72 L48 74 M82 80 L54 86 M160 64 L192 60 M160 72 L192 74 M158 80 L186 86"
+              <!-- Whiskers -->
+              <g opacity="0.6">
+                <path d="M82 68 L50 64 M82 76 L50 78 M84 84 L56 90 M158 68 L190 64 M158 76 L190 78 M156 84 L184 90"
                   stroke="var(--cat-stroke)" stroke-width="2" stroke-linecap="round" />
               </g>
             </svg>
@@ -632,22 +651,55 @@
           <div class="timeline-item reveal">
             <div class="card card--hover timeline-card">
               <div class="timeline-head">
-                <h3>Senior Data Analyst <span class="timeline-company">@ ASBL</span></h3>
-                <span class="timeline-meta">Sep 2022 — Present · Hyderabad, India</span>
+                <h3>Senior Data Analyst / AI Lead <span class="timeline-company">@ ASBL</span></h3>
+                <span class="timeline-meta">Feb 2025 — Present · Hyderabad, India</span>
               </div>
-              <p class="timeline-meta">AI Leadership · LLM Systems · MLOps · BI</p>
+              <p class="timeline-meta">AI Leadership · Production GenAI · Demand Modeling · MLOps</p>
               <ul>
-                <li>Leading AI initiatives driving <strong>₹200+ crore revenue impact</strong>, reporting to senior
-                  leadership on AI strategy and execution.</li>
-                <li>Built an LLM-powered chatbot with RAG and agentic workflows, cutting support response time by
-                  <strong>40%</strong>.
-                </li>
-                <li>Deployed a WhatsApp spam classifier protecting thousands of daily customer interactions.</li>
-                <li>Architected company-wide BI platforms (Metabase + SQL) powering decisions across sales, marketing,
-                  and CRM teams.</li>
-                <li>Set up MLOps practices — model versioning, monitoring, and automated retraining pipelines on AWS.
-                </li>
-                <li>Mentored a team of analysts, upskilling them in GenAI tooling and advanced SQL/Python.</li>
+                <li>Leading AI initiatives driving <strong>₹200+ crore revenue impact</strong>, reporting directly to
+                  senior leadership on enterprise AI strategy and roadmap.</li>
+                <li>Engineered inventory demand prediction models optimizing launch timing and lead ranking scoring
+                  systems to prioritize high-intent customers.</li>
+                <li>Developed agentic AI systems for pincode demographic intelligence and market suitability analysis to
+                  evaluate regional feasibility.</li>
+                <li>Established modern MLOps/LLMOps workflows on AWS ensuring pipeline reliability, monitoring, and
+                  reproducibility.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="card card--hover timeline-card">
+              <div class="timeline-head">
+                <h3>Independent AI Consultant & Research <span class="timeline-company">@ Independent</span></h3>
+                <span class="timeline-meta">Nov 2023 — Jan 2025 · Hyderabad, India</span>
+              </div>
+              <p class="timeline-meta">Generative AI · RAG Systems · Quantitative Finance · Technical Writing</p>
+              <ul>
+                <li>Deep-dived into advanced Generative AI architectures, vector retrieval pipelines, and local LLM
+                  orchestration (LangChain, Ollama).</li>
+                <li>Authored and published widely-read technical guides on Medium covering Survival Analysis in Python,
+                  Explainable AI (XAI), and statistical modeling.</li>
+                <li>Advised early-stage teams on data strategy, statistical analysis, and predictive modeling architectures.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="card card--hover timeline-card">
+              <div class="timeline-head">
+                <h3>Data Analyst & ML Engineer <span class="timeline-company">@ ASBL</span></h3>
+                <span class="timeline-meta">Sep 2022 — Oct 2023 · Hyderabad, India</span>
+              </div>
+              <p class="timeline-meta">LLM Chatbot · Real-time Classifier · BI Platform · AWS Infrastructure</p>
+              <ul>
+                <li>Built and deployed an LLM-powered customer support chatbot with RAG workflows, cutting support response
+                  time by <strong>40%</strong>.</li>
+                <li>Deployed a real-time WhatsApp spam classification system protecting thousands of daily customer
+                  interactions and sales communications.</li>
+                <li>Architected company-wide BI platforms (Metabase + SQL) powering daily decisions across sales,
+                  marketing, and operations.</li>
+                <li>Managed AWS EC2 and database infrastructure (secure MongoDB and ETL pipelines).</li>
               </ul>
             </div>
           </div>
@@ -656,14 +708,16 @@
             <div class="card card--hover timeline-card">
               <div class="timeline-head">
                 <h3>Data Science Intern <span class="timeline-company">@ Dynamind Solutions</span></h3>
-                <span class="timeline-meta">Jun 2022 — Sep 2022 · Remote</span>
+                <span class="timeline-meta">Jun 2022 — Sep 2022 · Mumbai, Maharashtra</span>
               </div>
+              <p class="timeline-meta">Recommendation Engines · Matchmaking Automation · EDA</p>
               <ul>
-                <li>Built a recommendation engine that boosted user engagement by <strong>45%</strong>.</li>
-                <li>Designed and deployed ML models end-to-end, from EDA and feature engineering to production
-                  deployment.</li>
-                <li>Collaborated with product and engineering teams to integrate model predictions into the platform.
-                </li>
+                <li>Built a recommendation engine using collaborative and content-based filtering that boosted user
+                  engagement by <strong>45%</strong>.</li>
+                <li>Automated mentor-mentee matchmaking system, eliminating manual workflows and saving 15+ hours of
+                  operational overhead weekly.</li>
+                <li>Collaborated across engineering and product teams to integrate machine learning endpoints into
+                  production.</li>
               </ul>
             </div>
           </div>
@@ -771,10 +825,56 @@
           </p>
         </div>
         <div class="blog-grid" id="blog-grid">
-          <!-- Populated by main.js from assets/data/blogs.json -->
+          <article class="card card--hover blog-card reveal">
+            <span class="chip">Data Science</span>
+            <p class="blog-date">Apr 2, 2026 · 6 min read</p>
+            <h3><a href="https://medium.com/@hrishikeshkini/survival-analysis-for-data-scientists-a-practical-guide-to-time-to-event-modeling-in-python-c7b7a188a26c" target="_blank" rel="noopener">Survival Analysis for Data Scientists: A Practical Guide to Time-to-Event Modeling in Python</a></h3>
+            <p class="blog-excerpt">Survival analysis answers one of the most valuable questions in data science: modeling time until an event occurs with censored data.</p>
+            <a class="blog-link" href="https://medium.com/@hrishikeshkini/survival-analysis-for-data-scientists-a-practical-guide-to-time-to-event-modeling-in-python-c7b7a188a26c" target="_blank" rel="noopener">Read on Medium →</a>
+          </article>
+
+          <article class="card card--hover blog-card reveal reveal-delay-1">
+            <span class="chip">Explainable AI</span>
+            <p class="blog-date">Mar 4, 2024 · 5 min read</p>
+            <h3><a href="https://medium.com/@hrishikeshkini/unraveling-the-power-of-explainable-ai-xai-ee91f310513d" target="_blank" rel="noopener">Unraveling the Power of Explainable AI (XAI)</a></h3>
+            <p class="blog-excerpt">As AI drives core business operations, explainability and transparency are essential for stakeholder trust and regulatory defense.</p>
+            <a class="blog-link" href="https://medium.com/@hrishikeshkini/unraveling-the-power-of-explainable-ai-xai-ee91f310513d" target="_blank" rel="noopener">Read on Medium →</a>
+          </article>
+
+          <article class="card card--hover blog-card reveal reveal-delay-2">
+            <span class="chip">Quantitative Analysis</span>
+            <p class="blog-date">Aug 6, 2024 · 7 min read</p>
+            <h3><a href="https://medium.com/@hrishikeshkini/mastering-sector-wise-intraday-trading-strategies-for-success-2b1c48694153" target="_blank" rel="noopener">Mastering Sector-Wise Intraday Trading: Strategies for Success</a></h3>
+            <p class="blog-excerpt">Data-driven sector momentum strategies and quantitative risk frameworks for navigating market complexities.</p>
+            <a class="blog-link" href="https://medium.com/@hrishikeshkini/mastering-sector-wise-intraday-trading-strategies-for-success-2b1c48694153" target="_blank" rel="noopener">Read on Medium →</a>
+          </article>
+
+          <article class="card card--hover blog-card reveal">
+            <span class="chip">Algorithmic Trading</span>
+            <p class="blog-date">Jul 14, 2024 · 6 min read</p>
+            <h3><a href="https://medium.com/@hrishikeshkini/unlocking-market-insights-the-hurst-exponent-of-momentum-in-trading-ff5678429d9f" target="_blank" rel="noopener">Unlocking Market Insights: The Hurst Exponent of Momentum in Trading</a></h3>
+            <p class="blog-excerpt">Using the Hurst exponent as a statistical indicator to differentiate between mean-reverting and trending market regimes.</p>
+            <a class="blog-link" href="https://medium.com/@hrishikeshkini/unlocking-market-insights-the-hurst-exponent-of-momentum-in-trading-ff5678429d9f" target="_blank" rel="noopener">Read on Medium →</a>
+          </article>
+
+          <article class="card card--hover blog-card reveal reveal-delay-1">
+            <span class="chip">Risk Management</span>
+            <p class="blog-date">Jan 30, 2024 · 5 min read</p>
+            <h3><a href="https://medium.com/@hrishikeshkini/a-definitive-guide-to-position-sizing-strategies-1b6754905e92" target="_blank" rel="noopener">A Definitive Guide to Position Sizing Strategies</a></h3>
+            <p class="blog-excerpt">Implementing mathematical position sizing models to preserve capital and optimize risk-adjusted returns.</p>
+            <a class="blog-link" href="https://medium.com/@hrishikeshkini/a-definitive-guide-to-position-sizing-strategies-1b6754905e92" target="_blank" rel="noopener">Read on Medium →</a>
+          </article>
+
+          <article class="card card--hover blog-card reveal reveal-delay-2">
+            <span class="chip">Algorithmic Trading</span>
+            <p class="blog-date">Dec 18, 2023 · 6 min read</p>
+            <h3><a href="https://medium.com/@hrishikeshkini/algorithmic-trading-strategies-for-intraday-success-a-comprehensive-guide-0a1a06205790" target="_blank" rel="noopener">Algorithmic Trading Strategies for Intraday Success</a></h3>
+            <p class="blog-excerpt">How systematic algorithmic workflows and automated execution provide a statistical edge in high-stakes environments.</p>
+            <a class="blog-link" href="https://medium.com/@hrishikeshkini/algorithmic-trading-strategies-for-intraday-success-a-comprehensive-guide-0a1a06205790" target="_blank" rel="noopener">Read on Medium →</a>
+          </article>
         </div>
-        <p class="blog-fallback reveal">
-          Loading posts… If nothing appears, read them directly on
+        <p class="blog-more reveal" style="text-align: center; margin-top: var(--space-5);">
+          Explore all publications and research on
           <a href="https://medium.com/@hrishikeshkini" target="_blank" rel="noopener">Medium →</a>
         </p>
       </div>
@@ -927,48 +1027,62 @@
     <p class="cat-bubble" id="cat-bubble" role="status" aria-hidden="true"></p>
     <button class="cat-button" id="cat-button" aria-label="Play with the cat" title="Meow?">
       <svg class="cat cat--mini" viewBox="0 0 240 220" aria-hidden="true">
+        <!-- Tail with white tip -->
         <g class="cat-tail">
-          <path d="M192 178 C 228 170, 238 136, 222 110" fill="none" stroke="var(--cat-stroke)" stroke-width="11"
+          <path d="M192 178 C 228 170, 238 136, 222 110" fill="none" stroke="var(--cat-fur)" stroke-width="14"
             stroke-linecap="round" />
+          <circle cx="222" cy="110" r="8" fill="var(--cat-white)" />
         </g>
-        <path d="M54 210 L54 152 C54 102 82 64 120 64 C158 64 186 102 186 152 L186 210 Z" fill="var(--cat-fill)"
+        <!-- Ginger Torso & White Chest Bib -->
+        <path d="M54 210 L54 152 C54 102 82 64 120 64 C158 64 186 102 186 152 L186 210 Z" fill="var(--cat-fur)"
           stroke="var(--cat-stroke)" stroke-width="3" stroke-linejoin="round" />
-        <ellipse cx="120" cy="158" rx="30" ry="36" fill="var(--accent-soft)" />
-        <rect x="88" y="188" width="28" height="22" rx="11" fill="var(--cat-fill)" stroke="var(--cat-stroke)"
-          stroke-width="3" />
+        <ellipse cx="120" cy="158" rx="34" ry="38" fill="var(--cat-white)" />
+        <!-- White Front Paws -->
+        <rect x="86" y="186" width="30" height="24" rx="12" fill="var(--cat-white)" stroke="var(--cat-stroke)"
+          stroke-width="2.5" />
         <path class="cat-paw-front"
-          d="M124 188 h26 a11 11 0 0 1 11 11 v11 a0 0 0 0 1 0 0 h-48 a0 0 0 0 1 0 0 v-11 a11 11 0 0 1 11-11 Z"
-          fill="var(--cat-fill)" stroke="var(--cat-stroke)" stroke-width="3" />
-        <rect x="92" y="106" width="56" height="10" rx="5" fill="var(--cat-eye)" />
-        <circle cx="120" cy="120" r="5.5" fill="var(--cat-eye)" />
+          d="M124 186 h28 a12 12 0 0 1 12 12 v12 h-52 v-12 a12 12 0 0 1 12-12 Z"
+          fill="var(--cat-white)" stroke="var(--cat-stroke)" stroke-width="2.5" />
+        <!-- Ears with Pink Interior -->
         <g>
-          <path class="cat-ear cat-ear-l" d="M88 34 L76 2 L116 24 Z" fill="var(--cat-fill)" stroke="var(--cat-stroke)"
+          <path class="cat-ear cat-ear-l" d="M88 34 L76 2 L116 24 Z" fill="var(--cat-fur)" stroke="var(--cat-stroke)"
             stroke-width="3" stroke-linejoin="round" />
-          <path class="cat-ear cat-ear-r" d="M152 34 L164 2 L124 24 Z" fill="var(--cat-fill)" stroke="var(--cat-stroke)"
-            stroke-width="3" stroke-linejoin="round" />
-          <path d="M90 27 L84 10 L106 22 Z" fill="var(--accent-soft)" />
-          <path d="M150 27 L156 10 L134 22 Z" fill="var(--accent-soft)" />
+          <path class="cat-ear cat-ear-r" d="M152 34 L164 2 L124 24 Z" fill="var(--cat-fur)"
+            stroke="var(--cat-stroke)" stroke-width="3" stroke-linejoin="round" />
+          <path d="M90 27 L84 10 L106 22 Z" fill="var(--cat-pink)" />
+          <path d="M150 27 L156 10 L134 22 Z" fill="var(--cat-pink)" />
         </g>
-        <circle cx="120" cy="62" r="42" fill="var(--cat-fill)" stroke="var(--cat-stroke)" stroke-width="3" />
-        <g opacity="0.55">
-          <path d="M108 26 q3 8 0 14 M120 24 q3 9 0 18 M132 26 q3 8 0 14" fill="none" stroke="var(--cat-stroke)"
-            stroke-width="3" stroke-linecap="round" />
+        <!-- Round Ginger Head -->
+        <circle cx="120" cy="62" r="42" fill="var(--cat-fur)" stroke="var(--cat-stroke)" stroke-width="3" />
+        <!-- Tiger Forehead Stripes -->
+        <g opacity="0.6">
+          <path d="M108 26 q3 8 0 14 M120 24 q3 9 0 18 M132 26 q3 8 0 14" fill="none" stroke="var(--cat-fur-shadow)"
+            stroke-width="3.2" stroke-linecap="round" />
         </g>
+        <!-- White Muzzle & Cheeks -->
+        <ellipse cx="106" cy="74" rx="16" ry="13" fill="var(--cat-white)" />
+        <ellipse cx="134" cy="74" rx="16" ry="13" fill="var(--cat-white)" />
+        <ellipse cx="120" cy="78" rx="14" ry="11" fill="var(--cat-white)" />
+        <!-- Sparkling Amber Eyes with Double Glints -->
         <g class="cat-eyes">
-          <circle class="cat-eye" cx="102" cy="60" r="8.5" fill="var(--cat-eye)" />
-          <circle class="cat-eye" cx="138" cy="60" r="8.5" fill="var(--cat-eye)" />
+          <circle class="cat-eye" cx="102" cy="60" r="9" fill="var(--cat-amber)" />
+          <circle class="cat-eye" cx="138" cy="60" r="9" fill="var(--cat-amber)" />
           <g class="cat-pupils">
-            <circle class="cat-pupil" cx="103" cy="60.5" r="3.6" fill="var(--cat-pupil)" />
-            <circle class="cat-pupil" cx="137" cy="60.5" r="3.6" fill="var(--cat-pupil)" />
-            <circle cx="98.6" cy="56.8" r="1.9" fill="var(--cat-pupil)" />
-            <circle cx="134.6" cy="56.8" r="1.9" fill="var(--cat-pupil)" />
+            <circle class="cat-pupil" cx="103" cy="60.5" r="4.2" fill="var(--cat-pupil)" />
+            <circle class="cat-pupil" cx="137" cy="60.5" r="4.2" fill="var(--cat-pupil)" />
+            <circle cx="99.5" cy="57" r="2.2" fill="#ffffff" />
+            <circle cx="135.5" cy="57" r="2.2" fill="#ffffff" />
+            <circle cx="105" cy="63.5" r="1.1" fill="#ffffff" />
+            <circle cx="139" cy="63.5" r="1.1" fill="#ffffff" />
           </g>
         </g>
-        <path d="M112 78 L128 78 L120 88 Z" fill="var(--cat-eye)" />
-        <path class="cat-mouth" d="M120 88 Q113 96 106 91 M120 88 Q127 96 134 91" fill="none" stroke="var(--cat-stroke)"
-          stroke-width="2.5" stroke-linecap="round" />
-        <g opacity="0.45">
-          <path d="M80 64 L48 60 M80 72 L48 74 M82 80 L54 86 M160 64 L192 60 M160 72 L192 74 M158 80 L186 86"
+        <!-- Pink Nose & Mouth -->
+        <path d="M114 74 L126 74 L120 81 Z" fill="var(--cat-pink)" />
+        <path class="cat-mouth" d="M120 81 Q113 88 107 84 M120 81 Q127 88 133 84" fill="none"
+          stroke="var(--cat-stroke)" stroke-width="2.5" stroke-linecap="round" />
+        <!-- Whiskers -->
+        <g opacity="0.6">
+          <path d="M82 68 L50 64 M82 76 L50 78 M84 84 L56 90 M158 68 L190 64 M158 76 L190 78 M156 84 L184 90"
             stroke="var(--cat-stroke)" stroke-width="2" stroke-linecap="round" />
         </g>
         <!-- 2D Accessories / Items -->
