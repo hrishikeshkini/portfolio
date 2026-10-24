@@ -197,7 +197,8 @@ import { RoomEnvironment } from "../vendor/three/examples/environments/RoomEnvir
 
     // Off the hero: just sit in the corner. This is the resting place for the
     // whole rest of the page, so the cat does not travel between sections.
-    pxToWorld(width - (compact ? 8 : 10), height - (compact ? 8 : 10), target);
+    // Raised off the edges so the silhouette never kisses the viewport border.
+    pxToWorld(width - (compact ? 24 : 56), height - (compact ? 32 : 72), target);
     targetScale = compact
       ? CAT_SCALE_MOBILE * 0.85
       : width < 1024
