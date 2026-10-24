@@ -173,7 +173,7 @@
             } catch (e) { }
             return (
               '<article class="card card--hover blog-card reveal is-visible">' +
-              '<span class="chip">Data Science</span>' +
+              '<span class="chip">' + (p.tag || "Article") + '</span>' +
               '<p class="blog-date">' + dateStr + '</p>' +
               '<h3><a href="' + p.link + '" target="_blank" rel="noopener">' + p.title + '</a></h3>' +
               '<p class="blog-excerpt">' + (p.excerpt || "") + '</p>' +
