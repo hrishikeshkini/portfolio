@@ -39,6 +39,36 @@ jobs:
               tree = ET.parse(r)
 
           ns = {"content": "http://purl.org/rss/1.0/modules/content/"}
+
+          # Keep manual/override tags from the existing file; classify new
+          # posts by title/excerpt keywords so tags survive daily refreshes.
+          old_tags = {}
+          try:
+              with open("assets/data/blogs.json", encoding="utf-8") as f:
+                  for old in json.load(f).get("posts", []):
+                      if old.get("tag"):
+                          old_tags[old["link"]] = old["tag"]
+          except FileNotFoundError:
+              pass
+
+          RULES = [
+              ("Trading", ("trading", "intraday", "position sizing", "hurst",
+                           "momentum", "market")),
+              ("Data Science", ("data science", "machine learning",
+                                "deep learning", " xai", "explainable",
+                                "survival analysis", "python",
+                                "time-to-event")),
+              ("Finance", ("financial", "finance", "money", "investing",
+                           "rich dad")),
+          ]
+
+          def classify(title, excerpt):
+              text = f"{title} {excerpt}".lower()
+              for name, keys in RULES:
+                  if any(k in text for k in keys):
+                      return name
+              return "Article"
+
           posts = []
           for item in tree.getroot().iter("item"):
               title = (item.findtext("title") or "").strip()
@@ -48,11 +78,14 @@ jobs:
               m = re.search(r"<p[^>]*>(.*?)</p>", cd, re.S)
               excerpt = html.unescape(re.sub(r"<[^>]+>", "", m.group(1))).strip() if m else ""
               excerpt = re.sub(r"\s+", " ", excerpt)[:220]
-              posts.append({"title": title, "link": link, "date": date, "excerpt": excerpt})
+              posts.append({"title": title, "link": link, "date": date,
+                            "excerpt": excerpt,
+                            "tag": old_tags.get(link, classify(title, excerpt))})
 
           out = {"source": FEED, "posts": posts}
           with open("assets/data/blogs.json", "w", encoding="utf-8") as f:
-              json.dump(out, f, indent=2)
+              json.dump(out, f, indent=2, ensure_ascii=False)
+              f.write("\n")
           print(f"Wrote {len(posts)} posts")
           EOF
 
