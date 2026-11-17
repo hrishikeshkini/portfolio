@@ -1690,19 +1690,17 @@ html.js .reveal.is-visible {
   }
 }
 
-/* below 768px the cat is smaller and docks bottom-right */
+/* below 768px the cat is smaller and uses the compact hero circle */
 @media (max-width: 767.98px) {
-  /* Hero: title scales down; the cat docks bottom-right, so no empty circle */
+  /* Hero: title scales down; the stage shrinks so the cat still stands
+     on the circle (it glides onto it once the circle scrolls into view) */
   .hero-title {
     font-size: 48px;
   }
 
-  .hero-cat-circle {
-    display: none;
-  }
-
   .hero-stage {
-    display: none;
+    flex: 0 0 auto;
+    max-width: 280px;
   }
 
   .nav .nav-links {

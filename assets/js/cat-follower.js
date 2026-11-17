@@ -37,6 +37,7 @@ import { RoomEnvironment } from "../vendor/three/examples/environments/RoomEnvir
   const LOOK_DAMPING = 6; // higher = snappier head turn
   const CAT_SCALE_DESKTOP = 3.9; // tuned so the cat stands on the hero circle
   const CAT_SCALE_MOBILE = 1.0; // <768px: smaller, docks bottom-right
+  const CAT_SCALE_MOBILE_ANCHOR = 2.6; // <768px: scale on the (smaller) hero circle
   const DOCK_SCALE_MULT = 0.6; // docked cat is smaller than an anchored cat
   const TARGET_HEIGHT = 0.45; // the model is normalised to this world height
   const ANCHOR_HEIGHT_RATIO = 0.6; // cat sits 60% down the anchor
@@ -165,25 +166,23 @@ import { RoomEnvironment } from "../vendor/three/examples/environments/RoomEnvir
     let bestEl = null;
     let bestDist = Infinity;
     const whNow = worldHeight();
-    if (!compact) {
-      const anchors = document.querySelectorAll(ANCHOR_SELECTOR);
-      for (let i = 0; i < anchors.length; i++) {
-        const el = anchors[i];
-        const r = el.getBoundingClientRect();
-        if (r.width === 0 || r.height === 0) continue; // hidden anchors
-        const s = parseFloat(el.getAttribute("data-cat-scale") || "");
-        const anchorScale = isNaN(s) ? CAT_SCALE_DESKTOP : s;
-        const catPxH = catBox.h * anchorScale * (height / whNow);
-        const ty = r.top + r.height * ANCHOR_HEIGHT_RATIO;
-        // Only use an anchor whose target point fits fully on screen below the
-        // nav. Otherwise the clamp would pin the cat on top of the content.
-        if (ty - catPxH < SAFE_TOP_PX) continue;
-        if (ty > height - SAFE_EDGE_PX) continue;
-        const d = Math.abs(ty - height / 2);
-        if (d < bestDist) {
-          bestDist = d;
-          bestEl = el;
-        }
+    const anchors = document.querySelectorAll(ANCHOR_SELECTOR);
+    for (let i = 0; i < anchors.length; i++) {
+      const el = anchors[i];
+      const r = el.getBoundingClientRect();
+      if (r.width === 0 || r.height === 0) continue; // hidden anchors
+      const s = parseFloat(el.getAttribute("data-cat-scale") || "");
+      const anchorScale = compact ? CAT_SCALE_MOBILE_ANCHOR : isNaN(s) ? CAT_SCALE_DESKTOP : s;
+      const catPxH = catBox.h * anchorScale * (height / whNow);
+      const ty = r.top + r.height * ANCHOR_HEIGHT_RATIO;
+      // Only use an anchor whose target point fits fully on screen below the
+      // nav. Otherwise the clamp would pin the cat on top of the content.
+      if (ty - catPxH < SAFE_TOP_PX) continue;
+      if (ty > height - SAFE_EDGE_PX) continue;
+      const d = Math.abs(ty - height / 2);
+      if (d < bestDist) {
+        bestDist = d;
+        bestEl = el;
       }
     }
 
@@ -191,7 +190,7 @@ import { RoomEnvironment } from "../vendor/three/examples/environments/RoomEnvir
       const r = bestEl.getBoundingClientRect();
       pxToWorld(r.left + r.width / 2, r.top + r.height * ANCHOR_HEIGHT_RATIO, target);
       const s = parseFloat(bestEl.getAttribute("data-cat-scale") || "");
-      targetScale = isNaN(s) ? CAT_SCALE_DESKTOP : s;
+      targetScale = compact ? CAT_SCALE_MOBILE_ANCHOR : isNaN(s) ? CAT_SCALE_DESKTOP : s;
       return clampTarget(target, targetScale);
     }
 
